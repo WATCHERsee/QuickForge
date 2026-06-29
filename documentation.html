@@ -49,58 +49,22 @@
     .nav-cta:hover { filter: brightness(1.1); transform: translateY(-1px); }
 
     /* SEARCH BAR */
-    .search-bar {
-      border-bottom: 1px solid var(--outline);
-      padding: 0.75rem 2rem;
-      background: rgba(11,19,38,0.5);
-    }
-    .search-inner {
-      max-width: 1080px; margin: 0 auto;
-    }
-    .search-input-wrap {
-      display: flex; align-items: center; gap: 0.5rem;
-      background: rgba(255,255,255,0.04); border: 1px solid var(--outline-hard);
-      border-radius: 8px; padding: 0.4375rem 0.75rem;
-      max-width: 380px;
-    }
-    .search-input {
-      font-family: var(--font); font-size: 0.875rem;
-      background: transparent; border: none; outline: none;
-      color: var(--on-surface); flex: 1;
-    }
+    .search-bar { border-bottom: 1px solid var(--outline); padding: 0.75rem 2rem; background: rgba(11,19,38,0.5); }
+    .search-inner { max-width: 1080px; margin: 0 auto; }
+    .search-input-wrap { display: flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.04); border: 1px solid var(--outline-hard); border-radius: 8px; padding: 0.4375rem 0.75rem; max-width: 380px; }
+    .search-input { font-family: var(--font); font-size: 0.875rem; background: transparent; border: none; outline: none; color: var(--on-surface); flex: 1; }
     .search-input::placeholder { color: var(--muted); }
-    .search-kbd {
-      font-family: var(--mono); font-size: 0.625rem;
-      color: var(--muted); background: rgba(255,255,255,0.06);
-      border: 1px solid var(--outline-hard); border-radius: 4px;
-      padding: 0.125rem 0.375rem; white-space: nowrap;
-    }
+    .search-kbd { font-family: var(--mono); font-size: 0.625rem; color: var(--muted); background: rgba(255,255,255,0.06); border: 1px solid var(--outline-hard); border-radius: 4px; padding: 0.125rem 0.375rem; white-space: nowrap; }
 
     /* THREE-COLUMN LAYOUT */
-    .doc-layout {
-      display: grid;
-      grid-template-columns: 220px 1fr 180px;
-      max-width: 1080px; margin: 0 auto; padding: 0 2rem;
-      min-height: calc(100dvh - 54px - 44px - 80px);
-    }
+    .doc-layout { display: grid; grid-template-columns: 220px 1fr 180px; max-width: 1080px; margin: 0 auto; padding: 0 2rem; min-height: calc(100dvh - 54px - 44px - 80px); }
 
     /* LEFT SIDEBAR */
-    .doc-sidebar {
-      padding: 1.5rem 1.25rem 2rem 0;
-      border-right: 1px solid var(--outline);
-      position: sticky; top: calc(54px + 44px);
-      height: calc(100dvh - 54px - 44px);
-      overflow-y: auto; flex-shrink: 0;
-    }
+    .doc-sidebar { padding: 1.5rem 1.25rem 2rem 0; border-right: 1px solid var(--outline); position: sticky; top: calc(54px + 44px); height: calc(100dvh - 54px - 44px); overflow-y: auto; flex-shrink: 0; }
     .sidebar-section { margin-bottom: 1.5rem; }
     .sidebar-group-label { font-size: 0.625rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); opacity: 0.7; margin-bottom: 0.375rem; }
     .sidebar-list { display: flex; flex-direction: column; gap: 0.0625rem; }
-    .sidebar-link {
-      font-size: 0.8125rem; color: var(--on-dim);
-      text-decoration: none; padding: 0.3125rem 0.5rem;
-      border-radius: 5px; display: block;
-      transition: background 0.13s, color 0.13s;
-    }
+    .sidebar-link { font-size: 0.8125rem; color: var(--on-dim); text-decoration: none; padding: 0.3125rem 0.5rem; border-radius: 5px; display: block; transition: background 0.13s, color 0.13s; }
     .sidebar-link:hover { background: var(--surface-mid); color: var(--on-surface); }
     .sidebar-link.active { background: var(--primary-dim); color: var(--primary); }
 
@@ -116,7 +80,6 @@
     /* DOC HEADING */
     .doc-h1 { font-size: 2rem; font-weight: 800; letter-spacing: -0.04em; color: var(--on-surface); line-height: 1.1; margin-bottom: 0.75rem; }
     .doc-lead { font-size: 1.0625rem; color: var(--on-dim); line-height: 1.7; margin-bottom: 2.5rem; border-bottom: 1px solid var(--outline); padding-bottom: 2rem; }
-
     .doc-h2 { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.025em; color: var(--on-surface); margin: 2.5rem 0 0.875rem; padding-top: 0.5rem; border-top: 1px solid var(--outline); }
     .doc-h2:first-of-type { border-top: none; margin-top: 0; }
     .doc-h3 { font-size: 0.9375rem; font-weight: 600; letter-spacing: -0.015em; color: var(--on-surface); margin: 1.5rem 0 0.5rem; }
@@ -124,11 +87,7 @@
     .doc-p a { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; }
 
     /* CALLOUT */
-    .callout {
-      border-radius: 8px; padding: 1rem 1.125rem;
-      margin: 1.25rem 0; display: flex; gap: 0.75rem; align-items: flex-start;
-      font-size: 0.875rem; line-height: 1.65;
-    }
+    .callout { border-radius: 8px; padding: 1rem 1.125rem; margin: 1.25rem 0; display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.875rem; line-height: 1.65; }
     .callout-info    { background: var(--primary-dim); border: 1px solid var(--primary-border); color: var(--on-dim); }
     .callout-warn    { background: rgba(255,200,60,0.07); border: 1px solid rgba(255,200,60,0.22); color: var(--on-dim); }
     .callout-success { background: rgba(76,215,246,0.07); border: 1px solid rgba(76,215,246,0.2); color: var(--on-dim); }
@@ -138,26 +97,12 @@
     .ci-success { color: var(--tertiary); }
 
     /* CODE BLOCK */
-    .code-block {
-      background: rgba(0,0,0,0.35); border: 1px solid var(--outline-hard);
-      border-radius: 10px; overflow: hidden; margin: 1rem 0 1.5rem;
-    }
-    .code-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0.5rem 0.875rem; border-bottom: 1px solid var(--outline);
-      background: rgba(255,255,255,0.02);
-    }
+    .code-block { background: rgba(0,0,0,0.35); border: 1px solid var(--outline-hard); border-radius: 10px; overflow: hidden; margin: 1rem 0 1.5rem; }
+    .code-header { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 0.875rem; border-bottom: 1px solid var(--outline); background: rgba(255,255,255,0.02); }
     .code-lang { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
-    .copy-btn {
-      font-size: 0.6875rem; color: var(--muted); background: none; border: none;
-      cursor: pointer; font-family: var(--font); transition: color 0.15s;
-      display: flex; align-items: center; gap: 0.3125rem;
-    }
+    .copy-btn { font-size: 0.6875rem; color: var(--muted); background: none; border: none; cursor: pointer; font-family: var(--font); transition: color 0.15s; display: flex; align-items: center; gap: 0.3125rem; }
     .copy-btn:hover { color: var(--on-surface); }
-    .code-body {
-      padding: 1rem 1.125rem; font-family: var(--mono); font-size: 0.78125rem;
-      line-height: 1.8; overflow-x: auto;
-    }
+    .code-body { padding: 1rem 1.125rem; font-family: var(--mono); font-size: 0.78125rem; line-height: 1.8; overflow-x: auto; }
     .code-body .kw  { color: var(--primary); }
     .code-body .str { color: var(--secondary); }
     .code-body .cm  { color: var(--muted); font-style: italic; }
@@ -186,13 +131,7 @@
     .step-desc  { font-size: 0.875rem; color: var(--on-dim); line-height: 1.65; }
 
     /* ON THIS PAGE */
-    .on-this-page {
-      padding: 1.5rem 0 2rem 1.5rem;
-      border-left: 1px solid var(--outline);
-      position: sticky; top: calc(54px + 44px);
-      height: calc(100dvh - 54px - 44px);
-      overflow-y: auto; flex-shrink: 0;
-    }
+    .on-this-page { padding: 1.5rem 0 2rem 1.5rem; border-left: 1px solid var(--outline); position: sticky; top: calc(54px + 44px); height: calc(100dvh - 54px - 44px); overflow-y: auto; flex-shrink: 0; }
     .otp-label { font-size: 0.625rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); opacity: 0.7; margin-bottom: 0.625rem; }
     .otp-list { display: flex; flex-direction: column; gap: 0.125rem; }
     .otp-link { font-size: 0.8125rem; color: var(--muted); text-decoration: none; padding: 0.25rem 0; display: block; transition: color 0.13s; border-left: 2px solid transparent; padding-left: 0.75rem; margin-left: -0.75rem; }
@@ -207,6 +146,10 @@
     .doc-nav-dir { font-size: 0.6875rem; color: var(--muted); margin-bottom: 0.25rem; }
     .doc-nav-title { font-size: 0.875rem; font-weight: 600; color: var(--on-surface); }
     .doc-nav-card.next { text-align: right; }
+
+    /* BADGE */
+    .badge { display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 0.125rem 0.4rem; border-radius: 4px; vertical-align: middle; margin-left: 0.375rem; }
+    .badge-soon { background: rgba(255,200,60,0.12); border: 1px solid rgba(255,200,60,0.3); color: #ffc83c; }
 
     /* FOOTER */
     footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 1.75rem 2rem; }
@@ -260,7 +203,6 @@
 
     <!-- LEFT SIDEBAR -->
     <aside class="doc-sidebar">
-
       <div class="sidebar-section">
         <div class="sidebar-group-label">Getting started</div>
         <div class="sidebar-list">
@@ -270,7 +212,6 @@
           <a href="#" class="sidebar-link" data-section="project-structure">Project structure</a>
         </div>
       </div>
-
       <div class="sidebar-section">
         <div class="sidebar-group-label">CLI reference</div>
         <div class="sidebar-list">
@@ -280,7 +221,6 @@
           <a href="#" class="sidebar-link" data-section="upgrade">quickforge upgrade</a>
         </div>
       </div>
-
       <div class="sidebar-section">
         <div class="sidebar-group-label">Templates</div>
         <div class="sidebar-list">
@@ -290,7 +230,6 @@
           <a href="#" class="sidebar-link" data-section="svelte-template">SvelteKit</a>
         </div>
       </div>
-
       <div class="sidebar-section">
         <div class="sidebar-group-label">Configuration</div>
         <div class="sidebar-list">
@@ -299,7 +238,6 @@
           <a href="#" class="sidebar-link" data-section="plugins">Plugins</a>
         </div>
       </div>
-
       <div class="sidebar-section">
         <div class="sidebar-group-label">Deployment</div>
         <div class="sidebar-list">
@@ -308,13 +246,14 @@
           <a href="#" class="sidebar-link" data-section="docker">Docker</a>
         </div>
       </div>
-
     </aside>
 
     <!-- MAIN CONTENT -->
     <main class="doc-content" id="doc-main">
 
-      <!-- INTRODUCTION -->
+      <!-- ============================================================ -->
+      <!-- SECTION: INTRODUCTION                                         -->
+      <!-- ============================================================ -->
       <div id="section-introduction">
         <div class="breadcrumb">
           <span class="bc-item">Getting started</span>
@@ -346,141 +285,18 @@
         <h3 class="doc-h3">Reproducible across machines and time</h3>
         <p class="doc-p">Lockfiles are committed, Docker builds are deterministic, and CI uses frozen installs. A project scaffolded today should build identically six months from now on a different machine.</p>
 
-        <h2 class="doc-h2" id="installation">Installation</h2>
-        <p class="doc-p">You do not need to install QuickForge globally. Use <span class="ic">npx</span> or <span class="ic">bunx</span> to run it at scaffold time:</p>
+        <h2 class="doc-h2" id="how-it-works">How it works</h2>
+        <p class="doc-p">Running <span class="ic">npx quickforge create</span> fetches the selected template from the QuickForge registry over HTTPS, writes the interpolated source to disk, installs dependencies with your chosen package manager, initialises a Git repository, and runs the post-scaffold validation suite to confirm the project builds cleanly.</p>
 
-        <div class="code-block">
-          <div class="code-header">
-            <span class="code-lang">bash</span>
-            <button class="copy-btn" onclick="copyCode(this)">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-              Copy
-            </button>
-          </div>
-          <div class="code-body">
-<span class="cm"># Using npx (no global install required)</span>
-npx quickforge create my-app
-
-<span class="cm"># Or using bunx</span>
-bunx quickforge create my-app
-
-<span class="cm"># Install globally if you scaffold frequently</span>
-npm install -g quickforge
-bun add -g quickforge
-          </div>
-        </div>
-
-        <h2 class="doc-h2" id="quickstart">Quickstart — Next.js 15 in 60 seconds</h2>
-
-        <div class="steps">
-          <div class="step">
-            <div class="step-num">1</div>
-            <div class="step-body">
-              <div class="step-title">Scaffold the project</div>
-              <div class="step-desc">Run the create command. QuickForge will fetch the template, resolve dependencies with Bun, and write the project to disk.</div>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num">2</div>
-            <div class="step-body">
-              <div class="step-title">Configure environment variables</div>
-              <div class="step-desc">Copy <span class="ic">.env.example</span> to <span class="ic">.env.local</span> and fill in the required values. The scaffold includes a typed env schema that will fail fast at startup if anything is missing.</div>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num">3</div>
-            <div class="step-body">
-              <div class="step-title">Run the database migration</div>
-              <div class="step-desc">Run <span class="ic">bun run db:push</span> to apply the baseline Prisma schema to your database. The connection string comes from <span class="ic">DATABASE_URL</span> in your .env file.</div>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num">4</div>
-            <div class="step-body">
-              <div class="step-title">Start the dev server</div>
-              <div class="step-desc">Run <span class="ic">bun run dev</span> to start Next.js with Turbopack. The app is available at <span class="ic">localhost:3000</span> with hot module replacement enabled.</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="code-block">
-          <div class="code-header">
-            <span class="code-lang">bash</span>
-            <button class="copy-btn" onclick="copyCode(this)">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>
-              Copy
-            </button>
-          </div>
-          <div class="code-body">
-<span class="cm"># Scaffold with auth and database pre-configured</span>
-npx quickforge create my-app \
-  --stack next-js-v15 \
-  --auth github,google \
-  --db postgresql
-
-<span class="cm"># Navigate and configure</span>
-cd my-app
-cp .env.example .env.local
-<span class="cm"># edit .env.local with your credentials</span>
-
-<span class="cm"># Push schema and start</span>
-bun run db:push
-bun run dev
-          </div>
-        </div>
-
-        <h2 class="doc-h2" id="cli-flags">CLI flags reference</h2>
-
+        <h2 class="doc-h2" id="available-stacks">Available stacks</h2>
         <div class="doc-table-wrap">
           <table class="doc-table">
-            <thead>
-              <tr>
-                <th>Flag</th>
-                <th>Default</th>
-                <th>Description</th>
-              </tr>
-            </thead>
+            <thead><tr><th>Stack</th><th>Runtime</th><th>ORM</th><th>Auth</th></tr></thead>
             <tbody>
-              <tr>
-                <td><span class="ic">--stack</span></td>
-                <td><span class="ic">next-js-v15</span></td>
-                <td>Template to scaffold. One of <span class="ic">next-js-v15</span>, <span class="ic">react-spa</span>, <span class="ic">node-express</span>, <span class="ic">sveltekit</span>.</td>
-              </tr>
-              <tr>
-                <td><span class="ic">--auth</span></td>
-                <td>none</td>
-                <td>Comma-separated OAuth providers to configure. e.g. <span class="ic">github,google,discord</span>.</td>
-              </tr>
-              <tr>
-                <td><span class="ic">--db</span></td>
-                <td>none</td>
-                <td>Database type for Prisma or Drizzle schema. One of <span class="ic">postgresql</span>, <span class="ic">mysql</span>, <span class="ic">sqlite</span>, <span class="ic">mongodb</span>.</td>
-              </tr>
-              <tr>
-                <td><span class="ic">--orm</span></td>
-                <td><span class="ic">prisma</span></td>
-                <td>ORM to use. One of <span class="ic">prisma</span>, <span class="ic">drizzle</span>.</td>
-              </tr>
-              <tr>
-                <td><span class="ic">--pm</span></td>
-                <td><span class="ic">bun</span></td>
-                <td>Package manager. One of <span class="ic">bun</span>, <span class="ic">pnpm</span>, <span class="ic">npm</span>.</td>
-              </tr>
-              <tr>
-                <td><span class="ic">--features</span></td>
-                <td>none</td>
-                <td>Additional integrations. Comma-separated: <span class="ic">stripe</span>, <span class="ic">email</span>, <span class="ic">analytics</span>.</td>
-              </tr>
-              <tr>
-                <td><span class="ic">--monorepo</span></td>
-                <td>false</td>
-                <td>Scaffold a Turborepo monorepo instead of a single app.</td>
-              </tr>
-              <tr>
-                <td><span class="ic">--no-git</span></td>
-                <td>false</td>
-                <td>Skip git initialisation. Useful when adding to an existing repository.</td>
-              </tr>
+              <tr><td><span class="ic">next-js-v15</span></td><td>Next.js 15 / React 19</td><td>Prisma 5 or Drizzle</td><td>Auth.js v5</td></tr>
+              <tr><td><span class="ic">react-spa</span></td><td>Vite 6 / React 19</td><td>—</td><td>Custom JWT</td></tr>
+              <tr><td><span class="ic">node-express</span></td><td>Node.js 22 / Hono v4</td><td>Drizzle</td><td>JWT middleware</td></tr>
+              <tr><td><span class="ic">sveltekit</span></td><td>SvelteKit 2 / Svelte 5</td><td>Drizzle</td><td>Lucia v3</td></tr>
             </tbody>
           </table>
         </div>
@@ -490,44 +306,287 @@ bun run dev
           <span>All flags are optional. Running <span class="ic">npx quickforge create</span> without flags launches the interactive wizard that guides you through each choice.</span>
         </div>
 
-        <h2 class="doc-h2" id="project-structure">Project structure — Next.js 15</h2>
-        <p class="doc-p">The generated Next.js project follows the App Router conventions with a predictable directory layout:</p>
+        <div class="doc-nav">
+          <div></div>
+          <a href="#" class="doc-nav-card next" data-section="installation">
+            <div class="doc-nav-dir">Next</div>
+            <div class="doc-nav-title">Installation</div>
+          </a>
+        </div>
+      </div>
 
+      <!-- ============================================================ -->
+      <!-- SECTION: INSTALLATION                                         -->
+      <!-- ============================================================ -->
+      <div id="section-installation" style="display:none;">
+        <div class="breadcrumb">
+          <span class="bc-item">Getting started</span>
+          <span class="bc-sep">/</span>
+          <span class="bc-current">Installation</span>
+        </div>
+
+        <h1 class="doc-h1">Installation</h1>
+        <p class="doc-lead">System requirements and install methods. QuickForge can be run with npx for one-off scaffolding, or installed globally for frequent use.</p>
+
+        <h2 class="doc-h2" id="system-requirements">System requirements</h2>
+        <div class="doc-table-wrap">
+          <table class="doc-table">
+            <thead><tr><th>Requirement</th><th>Minimum version</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>Node.js</td><td>18.17.0</td><td>LTS or Current. Used for npx and package scripts.</td></tr>
+              <tr><td>Bun</td><td>1.0.0</td><td>Default package manager and task runner in generated projects.</td></tr>
+              <tr><td>Git</td><td>2.30.0</td><td>Required for repository initialisation and Husky hooks.</td></tr>
+              <tr><td>Operating system</td><td>—</td><td>macOS 12+, Linux (glibc 2.28+), Windows WSL2</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="doc-h2" id="using-npx">Using npx (recommended)</h2>
+        <p class="doc-p">The simplest way to use QuickForge is via <span class="ic">npx</span>. No global installation is required — the CLI is fetched on demand and cached locally.</p>
         <div class="code-block">
-          <div class="code-header">
-            <span class="code-lang">tree</span>
-            <button class="copy-btn" onclick="copyCode(this)">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>
-              Copy
-            </button>
-          </div>
-          <div class="code-body">
-my-app/
-├── src/
-│   ├── app/                   <span class="cm"># App Router pages and layouts</span>
-│   │   ├── (auth)/            <span class="cm"># Route group — auth-gated pages</span>
-│   │   │   └── dashboard/
-│   │   ├── api/               <span class="cm"># Route handlers</span>
-│   │   │   └── auth/[...nextauth]/
-│   │   ├── layout.tsx
-│   │   └── page.tsx
-│   ├── components/            <span class="cm"># Shared UI components</span>
-│   ├── lib/                   <span class="cm"># Utility functions and clients</span>
-│   │   ├── auth.ts            <span class="cm"># Auth.js config</span>
-│   │   ├── db.ts              <span class="cm"># Prisma client singleton</span>
-│   │   └── env.ts             <span class="cm"># Typed env schema (t3-env)</span>
-│   └── middleware.ts          <span class="cm"># Auth middleware</span>
-├── prisma/
-│   └── schema.prisma
-├── .env.example
-├── Dockerfile
-├── next.config.ts
-└── tsconfig.json
-          </div>
+          <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body">npx quickforge create my-app</div>
+        </div>
+        <div class="callout callout-info">
+          <svg class="callout-icon ci-info" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          <span>No global install is required when using <span class="ic">npx</span>. npm will always resolve the latest stable version of QuickForge on each invocation.</span>
+        </div>
+
+        <h2 class="doc-h2" id="global-install">Global install</h2>
+        <p class="doc-p">If you scaffold projects regularly, a global install avoids the npx lookup on every invocation.</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body"><span class="cm"># npm</span>
+npm install -g quickforge
+
+<span class="cm"># Bun</span>
+bun add -g quickforge
+
+<span class="cm"># pnpm</span>
+pnpm add -g quickforge</div>
+        </div>
+
+        <h2 class="doc-h2" id="verify-installation">Verify installation</h2>
+        <p class="doc-p">After installing, confirm the CLI is reachable and check the version:</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body">quickforge --version
+<span class="cm"># quickforge/2.4.0 linux-x64 node-v22.3.0</span></div>
+        </div>
+
+        <h2 class="doc-h2" id="updating">Updating</h2>
+        <p class="doc-p">To update a globally installed QuickForge to the latest stable release:</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body"><span class="cm"># npm</span>
+npm update -g quickforge
+
+<span class="cm"># Bun</span>
+bun update -g quickforge</div>
+        </div>
+        <p class="doc-p">Alternatively, use the built-in upgrade command which also handles project file synchronisation: <span class="ic">quickforge upgrade</span>. See the <a href="#">quickforge upgrade</a> reference for details.</p>
+
+        <div class="doc-nav">
+          <a href="#" class="doc-nav-card" data-section="introduction">
+            <div class="doc-nav-dir">Previous</div>
+            <div class="doc-nav-title">Introduction</div>
+          </a>
+          <a href="#" class="doc-nav-card next" data-section="quickstart">
+            <div class="doc-nav-dir">Next</div>
+            <div class="doc-nav-title">Quickstart</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECTION: QUICKSTART                                           -->
+      <!-- ============================================================ -->
+      <div id="section-quickstart" style="display:none;">
+        <div class="breadcrumb">
+          <span class="bc-item">Getting started</span>
+          <span class="bc-sep">/</span>
+          <span class="bc-current">Quickstart</span>
+        </div>
+
+        <h1 class="doc-h1">Quickstart</h1>
+        <p class="doc-lead">Scaffold and run a production-ready Next.js 15 app in under 2 minutes. This guide walks from zero to a running dev server with authentication and database connected.</p>
+
+        <h2 class="doc-h2" id="qs-step1">Step 1 — Scaffold</h2>
+        <p class="doc-p">Run the create command with your desired stack and features. QuickForge will pull the template from the registry, interpolate your project name, install dependencies with Bun, and initialise a Git repository.</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body">npx quickforge create my-app \
+  --stack next-js-v15 \
+  --auth github \
+  --db postgresql</div>
+        </div>
+
+        <h2 class="doc-h2" id="qs-step2">Step 2 — Environment</h2>
+        <p class="doc-p">Copy the example environment file and fill in the required credentials. Every variable is validated at startup by the <span class="ic">t3-env</span> schema in <span class="ic">src/lib/env.ts</span> — the server will refuse to start if a required variable is missing.</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body">cd my-app
+cp .env.example .env.local</div>
+        </div>
+        <p class="doc-p">Edit <span class="ic">.env.local</span> and set the following values:</p>
+        <div class="doc-table-wrap">
+          <table class="doc-table">
+            <thead><tr><th>Variable</th><th>How to get it</th></tr></thead>
+            <tbody>
+              <tr><td><span class="ic">AUTH_SECRET</span></td><td>Generate with <span class="ic">openssl rand -hex 32</span></td></tr>
+              <tr><td><span class="ic">DATABASE_URL</span></td><td>PostgreSQL connection string, e.g. from Neon or a local Docker container</td></tr>
+              <tr><td><span class="ic">GITHUB_CLIENT_ID</span></td><td>GitHub OAuth App → Settings → Developer settings</td></tr>
+              <tr><td><span class="ic">GITHUB_CLIENT_SECRET</span></td><td>Same OAuth App page as above</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="doc-h2" id="qs-step3">Step 3 — Database</h2>
+        <p class="doc-p">Push the Prisma schema to your database. This creates the tables for the <span class="ic">User</span>, <span class="ic">Account</span>, and <span class="ic">Session</span> models that Auth.js requires.</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body">bun run db:push</div>
+        </div>
+        <div class="callout callout-info">
+          <svg class="callout-icon ci-info" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          <span><span class="ic">db:push</span> calls <span class="ic">prisma db push</span> and is intended for development. In production CI, use <span class="ic">bun run db:migrate</span> which calls <span class="ic">prisma migrate deploy</span> to apply versioned migrations safely.</span>
+        </div>
+
+        <h2 class="doc-h2" id="qs-step4">Step 4 — Run</h2>
+        <p class="doc-p">Start the Next.js development server. Turbopack is enabled by default in the scaffold, giving significantly faster hot module replacement than webpack.</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body">bun run dev
+<span class="cm"># ▲ Next.js 15.3.0 (Turbopack)</span>
+<span class="cm"># - Local:        http://localhost:3000</span>
+<span class="cm"># - Network:      http://192.168.1.10:3000</span></div>
+        </div>
+
+        <h2 class="doc-h2" id="qs-scripts">Available scripts</h2>
+        <div class="doc-table-wrap">
+          <table class="doc-table">
+            <thead><tr><th>Script</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><span class="ic">bun run dev</span></td><td>Start Next.js dev server with Turbopack</td></tr>
+              <tr><td><span class="ic">bun run build</span></td><td>Production build with standalone output</td></tr>
+              <tr><td><span class="ic">bun run start</span></td><td>Start the compiled production server</td></tr>
+              <tr><td><span class="ic">bun run db:push</span></td><td>Push schema changes to database (dev)</td></tr>
+              <tr><td><span class="ic">bun run db:migrate</span></td><td>Apply versioned migrations (production)</td></tr>
+              <tr><td><span class="ic">bun run db:studio</span></td><td>Open Prisma Studio GUI at localhost:5555</td></tr>
+              <tr><td><span class="ic">bun run lint</span></td><td>Run ESLint on the src/ directory</td></tr>
+              <tr><td><span class="ic">bun run typecheck</span></td><td>Run tsc --noEmit for type checking</td></tr>
+              <tr><td><span class="ic">bun run test</span></td><td>Run Vitest unit tests</td></tr>
+            </tbody>
+          </table>
         </div>
 
         <div class="doc-nav">
-          <div></div>
+          <a href="#" class="doc-nav-card" data-section="installation">
+            <div class="doc-nav-dir">Previous</div>
+            <div class="doc-nav-title">Installation</div>
+          </a>
+          <a href="#" class="doc-nav-card next" data-section="project-structure">
+            <div class="doc-nav-dir">Next</div>
+            <div class="doc-nav-title">Project structure</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECTION: PROJECT STRUCTURE                                    -->
+      <!-- ============================================================ -->
+      <div id="section-project-structure" style="display:none;">
+        <div class="breadcrumb">
+          <span class="bc-item">Getting started</span>
+          <span class="bc-sep">/</span>
+          <span class="bc-current">Project structure</span>
+        </div>
+
+        <h1 class="doc-h1">Project structure</h1>
+        <p class="doc-lead">Layout conventions shared across all QuickForge templates. Understanding the directory layout makes it easier to extend your project and transfer knowledge between stacks.</p>
+
+        <h2 class="doc-h2" id="ps-nextjs">Next.js 15 layout</h2>
+        <p class="doc-p">The Next.js scaffold uses the App Router with a <span class="ic">src/</span> directory for all application code.</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">tree</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body">my-app/
+├── .github/
+│   └── workflows/
+│       └── ci.yml             <span class="cm"># Lint, typecheck, test, build</span>
+├── prisma/
+│   ├── schema.prisma          <span class="cm"># Database schema</span>
+│   └── migrations/            <span class="cm"># Versioned migration files</span>
+├── src/
+│   ├── app/                   <span class="cm"># App Router — pages and layouts</span>
+│   │   ├── (auth)/            <span class="cm"># Route group — auth-gated pages</span>
+│   │   │   └── dashboard/
+│   │   │       └── page.tsx
+│   │   ├── (public)/          <span class="cm"># Route group — public pages</span>
+│   │   │   └── page.tsx
+│   │   ├── api/
+│   │   │   └── auth/
+│   │   │       └── [...nextauth]/
+│   │   │           └── route.ts  <span class="cm"># Auth.js route handler</span>
+│   │   ├── layout.tsx         <span class="cm"># Root layout with providers</span>
+│   │   └── globals.css        <span class="cm"># Tailwind CSS v4 entry point</span>
+│   ├── components/
+│   │   ├── ui/                <span class="cm"># Primitive UI components</span>
+│   │   └── layout/            <span class="cm"># Header, footer, shell</span>
+│   ├── lib/
+│   │   ├── auth.ts            <span class="cm"># Auth.js configuration</span>
+│   │   ├── db.ts              <span class="cm"># Prisma client singleton</span>
+│   │   └── env.ts             <span class="cm"># t3-env typed environment schema</span>
+│   └── middleware.ts          <span class="cm"># Auth session middleware</span>
+├── .env.example               <span class="cm"># Committed — no secrets</span>
+├── Dockerfile                 <span class="cm"># Multi-stage production build</span>
+├── docker-compose.yml         <span class="cm"># Local dev with Postgres + Redis</span>
+├── next.config.ts             <span class="cm"># Turbopack, image domains, etc.</span>
+└── tsconfig.json</div>
+        </div>
+
+        <h2 class="doc-h2" id="ps-naming">Naming conventions</h2>
+        <div class="doc-table-wrap">
+          <table class="doc-table">
+            <thead><tr><th>Convention</th><th>Example</th><th>Reason</th></tr></thead>
+            <tbody>
+              <tr><td>Route groups use parentheses</td><td><span class="ic">(auth)/dashboard</span></td><td>Groups related routes without affecting the URL path</td></tr>
+              <tr><td>Server Components by default</td><td><span class="ic">page.tsx</span> has no directive</td><td>Maximises server-side rendering and reduces client bundle</td></tr>
+              <tr><td>Client Components marked explicitly</td><td><span class="ic">'use client'</span> at top of file</td><td>Makes the client boundary visible at a glance</td></tr>
+              <tr><td><span class="ic">lib/</span> for singletons</td><td><span class="ic">lib/db.ts</span>, <span class="ic">lib/auth.ts</span></td><td>Single import location prevents multiple instances of Prisma</td></tr>
+              <tr><td>PascalCase for components</td><td><span class="ic">UserAvatar.tsx</span></td><td>Distinguishes component files from utility modules</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="doc-h2" id="ps-paths">Import paths</h2>
+        <p class="doc-p">All templates configure TypeScript path aliases so imports are absolute and portable regardless of nesting depth.</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">json</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body"><span class="cm">// tsconfig.json</span>
+{
+  <span class="str">"compilerOptions"</span>: {
+    <span class="str">"baseUrl"</span>: <span class="str">"."</span>,
+    <span class="str">"paths"</span>: {
+      <span class="str">"@/*"</span>: [<span class="str">"./src/*"</span>]
+    }
+  }
+}
+
+<span class="cm">// Usage in any file</span>
+<span class="kw">import</span> { db } <span class="kw">from</span> <span class="str">"@/lib/db"</span>;
+<span class="kw">import</span> { UserAvatar } <span class="kw">from</span> <span class="str">"@/components/ui/UserAvatar"</span>;</div>
+        </div>
+
+        <div class="callout callout-info">
+          <svg class="callout-icon ci-info" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          <span>All templates use the same <span class="ic">src/</span> layout and the <span class="ic">@/*</span> alias, so patterns you learn in the Next.js template transfer directly to the SvelteKit and Node.js templates.</span>
+        </div>
+
+        <div class="doc-nav">
+          <a href="#" class="doc-nav-card" data-section="quickstart">
+            <div class="doc-nav-dir">Previous</div>
+            <div class="doc-nav-title">Quickstart</div>
+          </a>
           <a href="#" class="doc-nav-card next" data-section="create">
             <div class="doc-nav-dir">Next</div>
             <div class="doc-nav-title">quickforge create</div>
@@ -535,8 +594,10 @@ my-app/
         </div>
       </div>
 
-      <!-- QUICKFORGE CREATE (hidden by default) -->
-      <div id="section-create" style="display: none;">
+      <!-- ============================================================ -->
+      <!-- SECTION: QUICKFORGE CREATE                                    -->
+      <!-- ============================================================ -->
+      <div id="section-create" style="display:none;">
         <div class="breadcrumb">
           <span class="bc-item">CLI reference</span>
           <span class="bc-sep">/</span>
@@ -545,17 +606,33 @@ my-app/
         <h1 class="doc-h1">quickforge create</h1>
         <p class="doc-lead">Scaffold a new project from a QuickForge template. The create command fetches the chosen template from the registry, resolves all dependencies, and writes the project to disk.</p>
 
-        <h2 class="doc-h2" id="syntax">Syntax</h2>
+        <h2 class="doc-h2" id="create-syntax">Syntax</h2>
         <div class="code-block">
           <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
           <div class="code-body">npx quickforge create [project-name] [flags]</div>
         </div>
 
-        <h2 class="doc-h2" id="examples">Examples</h2>
+        <h2 class="doc-h2" id="create-flags">Flags</h2>
+        <div class="doc-table-wrap">
+          <table class="doc-table">
+            <thead><tr><th>Flag</th><th>Default</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><span class="ic">--stack</span></td><td><span class="ic">next-js-v15</span></td><td>Template to scaffold. One of <span class="ic">next-js-v15</span>, <span class="ic">react-spa</span>, <span class="ic">node-express</span>, <span class="ic">sveltekit</span>.</td></tr>
+              <tr><td><span class="ic">--auth</span></td><td>none</td><td>Comma-separated OAuth providers. e.g. <span class="ic">github,google,discord</span>.</td></tr>
+              <tr><td><span class="ic">--db</span></td><td>none</td><td>Database type. One of <span class="ic">postgresql</span>, <span class="ic">mysql</span>, <span class="ic">sqlite</span>, <span class="ic">mongodb</span>.</td></tr>
+              <tr><td><span class="ic">--orm</span></td><td><span class="ic">prisma</span></td><td>ORM to use. One of <span class="ic">prisma</span>, <span class="ic">drizzle</span>.</td></tr>
+              <tr><td><span class="ic">--pm</span></td><td><span class="ic">bun</span></td><td>Package manager. One of <span class="ic">bun</span>, <span class="ic">pnpm</span>, <span class="ic">npm</span>.</td></tr>
+              <tr><td><span class="ic">--features</span></td><td>none</td><td>Additional integrations. Comma-separated: <span class="ic">stripe</span>, <span class="ic">email</span>, <span class="ic">analytics</span>.</td></tr>
+              <tr><td><span class="ic">--monorepo</span></td><td>false</td><td>Scaffold a Turborepo monorepo instead of a single app.</td></tr>
+              <tr><td><span class="ic">--no-git</span></td><td>false</td><td>Skip git initialisation.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="doc-h2" id="create-examples">Examples</h2>
         <div class="code-block">
           <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
-          <div class="code-body">
-<span class="cm"># Interactive mode</span>
+          <div class="code-body"><span class="cm"># Interactive mode — launches the wizard</span>
 npx quickforge create
 
 <span class="cm"># Minimal scaffold — no auth, no database</span>
@@ -573,18 +650,1420 @@ npx quickforge create my-blog \
   --stack sveltekit \
   --db sqlite \
   --pm pnpm
-          </div>
+
+<span class="cm"># Node.js API with Drizzle ORM, skipping git init</span>
+npx quickforge create my-api \
+  --stack node-express \
+  --db postgresql \
+  --orm drizzle \
+  --no-git</div>
         </div>
 
         <div class="doc-nav">
-          <a href="#" class="doc-nav-card" data-section="introduction">
+          <a href="#" class="doc-nav-card" data-section="project-structure">
             <div class="doc-nav-dir">Previous</div>
-            <div class="doc-nav-title">Introduction</div>
+            <div class="doc-nav-title">Project structure</div>
           </a>
           <a href="#" class="doc-nav-card next" data-section="add">
             <div class="doc-nav-dir">Next</div>
             <div class="doc-nav-title">quickforge add</div>
           </a>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECTION: QUICKFORGE ADD                                       -->
+      <!-- ============================================================ -->
+      <div id="section-add" style="display:none;">
+        <div class="breadcrumb">
+          <span class="bc-item">CLI reference</span>
+          <span class="bc-sep">/</span>
+          <span class="bc-current">quickforge add</span>
+        </div>
+        <h1 class="doc-h1">quickforge add</h1>
+        <p class="doc-lead">Add an integration or feature to an existing QuickForge project without re-scaffolding. The add command detects your project stack, installs the required packages, writes integration files, and updates environment variable templates.</p>
+
+        <h2 class="doc-h2" id="add-syntax">Syntax</h2>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body">quickforge add [integration] [flags]</div>
+        </div>
+
+        <h2 class="doc-h2" id="add-integrations">Available integrations</h2>
+        <div class="doc-table-wrap">
+          <table class="doc-table">
+            <thead><tr><th>Integration</th><th>What it adds</th></tr></thead>
+            <tbody>
+              <tr><td><span class="ic">stripe</span></td><td>Stripe billing with webhook handler, customer portal route, and typed price ID helpers</td></tr>
+              <tr><td><span class="ic">email</span></td><td>Resend API client and React Email templates with a pre-built welcome email</td></tr>
+              <tr><td><span class="ic">analytics</span></td><td>Vercel Analytics and Speed Insights components injected into the root layout</td></tr>
+              <tr><td><span class="ic">s3</span></td><td>AWS S3 / Cloudflare R2 file upload with presigned URL handler and client hook</td></tr>
+              <tr><td><span class="ic">redis</span></td><td>Upstash Redis client with rate-limiting middleware pre-configured</td></tr>
+              <tr><td><span class="ic">sentry</span></td><td>Sentry error tracking with source map upload and Next.js instrumentation hook</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="doc-h2" id="add-examples">Examples</h2>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body"><span class="cm"># Add Stripe billing</span>
+quickforge add stripe
+
+<span class="cm"># Add email with Resend provider (default)</span>
+quickforge add email --provider resend
+
+<span class="cm"># Add Redis rate limiting with Upstash</span>
+quickforge add redis --provider upstash
+
+<span class="cm"># Add Sentry with org and project flags</span>
+quickforge add sentry --org my-org --project my-app</div>
+        </div>
+
+        <h2 class="doc-h2" id="add-what-happens">What add does</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <div class="step-title">Detect project stack</div>
+              <div class="step-desc">Reads <span class="ic">package.json</span> to determine whether the project is Next.js, React SPA, Node.js, or SvelteKit. Selects the correct integration variant accordingly.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <div class="step-title">Install required packages</div>
+              <div class="step-desc">Calls the project's package manager (bun, npm, or pnpm) to install the integration's dependencies and dev-dependencies.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <div class="step-title">Write integration files</div>
+              <div class="step-desc">Creates source files under <span class="ic">src/lib/</span> and <span class="ic">src/app/api/</span> as appropriate. Existing files are never overwritten without a confirmation prompt.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <div class="step-title">Append env vars to .env.example</div>
+              <div class="step-desc">Appends required environment variable keys (without values) to <span class="ic">.env.example</span> and to the <span class="ic">t3-env</span> schema in <span class="ic">src/lib/env.ts</span>.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">5</div>
+            <div class="step-body">
+              <div class="step-title">Update TypeScript types</div>
+              <div class="step-desc">Runs <span class="ic">tsc --noEmit</span> to confirm the integration compiles cleanly. Reports any type errors before finishing.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout callout-warn">
+          <svg class="callout-icon ci-warn" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span>Run <span class="ic">quickforge add</span> from the project root — the directory that contains <span class="ic">package.json</span>. Running it from a subdirectory will cause stack detection to fail.</span>
+        </div>
+
+        <div class="doc-nav">
+          <a href="#" class="doc-nav-card" data-section="create">
+            <div class="doc-nav-dir">Previous</div>
+            <div class="doc-nav-title">quickforge create</div>
+          </a>
+          <a href="#" class="doc-nav-card next" data-section="list">
+            <div class="doc-nav-dir">Next</div>
+            <div class="doc-nav-title">quickforge list</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECTION: QUICKFORGE LIST                                      -->
+      <!-- ============================================================ -->
+      <div id="section-list" style="display:none;">
+        <div class="breadcrumb">
+          <span class="bc-item">CLI reference</span>
+          <span class="bc-sep">/</span>
+          <span class="bc-current">quickforge list</span>
+        </div>
+        <h1 class="doc-h1">quickforge list</h1>
+        <p class="doc-lead">List all available templates and integrations from the QuickForge registry. Use this to discover what is available before scaffolding or to check for updates to existing templates.</p>
+
+        <h2 class="doc-h2" id="list-syntax">Syntax</h2>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body">quickforge list [--type templates|integrations|all]</div>
+        </div>
+
+        <h2 class="doc-h2" id="list-output">Output</h2>
+        <p class="doc-p">Running <span class="ic">quickforge list</span> without flags displays all templates and integrations:</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">terminal</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body"><span class="cm">Templates</span>
+  next-js-v15      v3.1.0   Next.js 15 App Router with Auth.js v5 and Prisma
+  react-spa        v2.4.0   Vite 6 + React 19 SPA with TanStack Router and React Query
+  node-express     v1.8.0   Hono v4 + tRPC v11 REST/RPC API with Drizzle ORM
+  sveltekit        v1.5.0   SvelteKit 2 + Svelte 5 with Lucia Auth and Drizzle
+
+<span class="cm">Integrations</span>
+  stripe           v2.1.0   Stripe billing with webhook handler and customer portal
+  email            v1.3.0   Resend API client with React Email templates
+  analytics        v1.0.0   Vercel Analytics and Speed Insights
+  s3               v1.2.0   AWS S3 / Cloudflare R2 file upload with presigned URLs
+  redis            v1.1.0   Upstash Redis client with rate-limiting middleware
+  sentry           v1.4.0   Sentry error tracking with source map upload</div>
+        </div>
+
+        <h2 class="doc-h2" id="list-flags">Flags</h2>
+        <div class="doc-table-wrap">
+          <table class="doc-table">
+            <thead><tr><th>Flag</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><span class="ic">--type</span></td><td>Filter output by type. One of <span class="ic">templates</span>, <span class="ic">integrations</span>, or <span class="ic">all</span> (default).</td></tr>
+              <tr><td><span class="ic">--json</span></td><td>Output the full registry as a JSON array instead of formatted text.</td></tr>
+              <tr><td><span class="ic">--outdated</span></td><td>Show only items where the local installed version is behind the registry version.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="doc-h2" id="list-json">JSON output</h2>
+        <p class="doc-p">Pipe into <span class="ic">jq</span> or use in scripts with the <span class="ic">--json</span> flag:</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body">quickforge list --json
+<span class="cm"># Output:</span>
+[
+  {
+    <span class="str">"name"</span>: <span class="str">"next-js-v15"</span>,
+    <span class="str">"type"</span>: <span class="str">"template"</span>,
+    <span class="str">"version"</span>: <span class="str">"3.1.0"</span>,
+    <span class="str">"description"</span>: <span class="str">"Next.js 15 App Router with Auth.js v5 and Prisma"</span>,
+    <span class="str">"tags"</span>: [<span class="str">"nextjs"</span>, <span class="str">"react"</span>, <span class="str">"fullstack"</span>]
+  },
+  ...
+]</div>
+        </div>
+
+        <div class="doc-nav">
+          <a href="#" class="doc-nav-card" data-section="add">
+            <div class="doc-nav-dir">Previous</div>
+            <div class="doc-nav-title">quickforge add</div>
+          </a>
+          <a href="#" class="doc-nav-card next" data-section="upgrade">
+            <div class="doc-nav-dir">Next</div>
+            <div class="doc-nav-title">quickforge upgrade</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECTION: QUICKFORGE UPGRADE                                   -->
+      <!-- ============================================================ -->
+      <div id="section-upgrade" style="display:none;">
+        <div class="breadcrumb">
+          <span class="bc-item">CLI reference</span>
+          <span class="bc-sep">/</span>
+          <span class="bc-current">quickforge upgrade</span>
+        </div>
+        <h1 class="doc-h1">quickforge upgrade</h1>
+        <p class="doc-lead">Upgrade the QuickForge CLI and optionally sync a project's generated files with the latest template version. The sync feature diffs your scaffold files against the current template and presents a patch preview before applying.</p>
+
+        <h2 class="doc-h2" id="upgrade-cli">Upgrade the CLI</h2>
+        <p class="doc-p">Running <span class="ic">quickforge upgrade</span> without flags upgrades the CLI itself to the latest stable version, whether installed globally or as a local dev-dependency.</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body">quickforge upgrade
+<span class="cm"># Checking registry for updates...</span>
+<span class="cm"># quickforge 2.3.1 → 2.4.0</span>
+<span class="cm"># ✓ Upgraded successfully</span></div>
+        </div>
+
+        <h2 class="doc-h2" id="upgrade-sync">Sync project files</h2>
+        <p class="doc-p">The <span class="ic">--sync</span> flag compares your project's generated scaffold files against the latest template version in the registry. It shows a unified diff of what would change and prompts for confirmation before applying.</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body">quickforge upgrade --sync
+<span class="cm"># Fetching latest next-js-v15 template (v3.1.0)...</span>
+<span class="cm"># Comparing against scaffold version v3.0.2...</span>
+<span class="cm">#</span>
+<span class="cm"># Modified: next.config.ts</span>
+<span class="cm"># Modified: .github/workflows/ci.yml</span>
+<span class="cm"># Modified: Dockerfile</span>
+<span class="cm">#</span>
+<span class="cm"># Apply changes? [y/N]</span></div>
+        </div>
+
+        <h2 class="doc-h2" id="upgrade-flags">Flags</h2>
+        <div class="doc-table-wrap">
+          <table class="doc-table">
+            <thead><tr><th>Flag</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><span class="ic">--sync</span></td><td>Sync project scaffold files with the latest template version in the registry.</td></tr>
+              <tr><td><span class="ic">--dry-run</span></td><td>Show what would change without writing any files. Use with <span class="ic">--sync</span>.</td></tr>
+              <tr><td><span class="ic">--force</span></td><td>Apply sync changes without the confirmation prompt. Use in CI after reviewing a <span class="ic">--dry-run</span>.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-warn">
+          <svg class="callout-icon ci-warn" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span><span class="ic">--sync</span> modifies files in your working directory. Commit or stash all local changes before running it so you can easily review or revert the applied patch.</span>
+        </div>
+
+        <h2 class="doc-h2" id="upgrade-what-syncs">What gets synced</h2>
+        <p class="doc-p">The sync operation only touches files that were generated by QuickForge and are expected to be maintained by the template, not by you. It never modifies your application code.</p>
+        <div class="doc-table-wrap">
+          <table class="doc-table">
+            <thead><tr><th>File category</th><th>Gets synced?</th></tr></thead>
+            <tbody>
+              <tr><td>Config files (<span class="ic">next.config.ts</span>, <span class="ic">tsconfig.json</span>, <span class="ic">eslint.config.mjs</span>)</td><td>Yes</td></tr>
+              <tr><td>CI workflows (<span class="ic">.github/workflows/</span>)</td><td>Yes</td></tr>
+              <tr><td>Docker files (<span class="ic">Dockerfile</span>, <span class="ic">docker-compose.yml</span>)</td><td>Yes</td></tr>
+              <tr><td>App code (<span class="ic">src/app/</span>, <span class="ic">src/components/</span>)</td><td>No</td></tr>
+              <tr><td>Database schema (<span class="ic">prisma/schema.prisma</span>)</td><td>No</td></tr>
+              <tr><td>Environment files (<span class="ic">.env.local</span>, <span class="ic">.env.example</span>)</td><td>No</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="doc-nav">
+          <a href="#" class="doc-nav-card" data-section="list">
+            <div class="doc-nav-dir">Previous</div>
+            <div class="doc-nav-title">quickforge list</div>
+          </a>
+          <a href="#" class="doc-nav-card next" data-section="nextjs-template">
+            <div class="doc-nav-dir">Next</div>
+            <div class="doc-nav-title">Next.js 15</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECTION: NEXT.JS 15 TEMPLATE                                  -->
+      <!-- ============================================================ -->
+      <div id="section-nextjs-template" style="display:none;">
+        <div class="breadcrumb">
+          <span class="bc-item">Templates</span>
+          <span class="bc-sep">/</span>
+          <span class="bc-current">Next.js 15</span>
+        </div>
+        <h1 class="doc-h1">Next.js 15 template</h1>
+        <p class="doc-lead">The default QuickForge template. App Router, Server Components, Server Actions, Turbopack, and Auth.js v5 pre-configured. Use this for full-stack web applications that require SSR, SEO, and a unified TypeScript codebase.</p>
+
+        <h2 class="doc-h2" id="nj-includes">What's included</h2>
+        <p class="doc-p"><strong>Next.js 15.3</strong> with App Router and React Server Components. Server Actions are enabled by default for form handling and data mutations without a separate API layer.</p>
+        <p class="doc-p"><strong>React 19</strong> with the new <span class="ic">use</span> hook, transitions, and optimistic updates. The template is kept on the RC that ships with Next.js 15.</p>
+        <p class="doc-p"><strong>TypeScript 5.5</strong> in strict mode with <span class="ic">noUncheckedIndexedAccess</span> and <span class="ic">exactOptionalPropertyTypes</span> enabled.</p>
+        <p class="doc-p"><strong>Tailwind CSS v4</strong> using the CSS-first configuration. The design tokens live in <span class="ic">globals.css</span> rather than <span class="ic">tailwind.config.ts</span>.</p>
+        <p class="doc-p"><strong>Auth.js v5</strong> with session middleware, database session storage, and pre-configured GitHub and Google OAuth adapters.</p>
+        <p class="doc-p"><strong>Prisma 5.18</strong> ORM with the Prisma Client Extensions API. Alternatively select Drizzle ORM with the <span class="ic">--orm drizzle</span> flag.</p>
+        <p class="doc-p"><strong>t3-env</strong> for typed, validated environment variables that fail loudly at startup rather than silently at runtime.</p>
+        <p class="doc-p"><strong>ESLint flat config</strong> with <span class="ic">eslint-config-next</span>, Prettier integration, and <span class="ic">@typescript-eslint</span> strict rules.</p>
+        <p class="doc-p"><strong>Husky + lint-staged</strong> pre-commit hooks that run type checking, linting, and formatting on staged files.</p>
+        <p class="doc-p"><strong>GitHub Actions CI</strong> pipeline that runs <span class="ic">typecheck</span>, <span class="ic">lint</span>, <span class="ic">test</span>, and <span class="ic">build</span> on every push and pull request.</p>
+
+        <h2 class="doc-h2" id="nj-scaffold">Scaffold command</h2>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body">npx quickforge create my-app \
+  --stack next-js-v15 \
+  --auth github,google \
+  --db postgresql \
+  --orm prisma</div>
+        </div>
+
+        <h2 class="doc-h2" id="nj-keyfiles">Key files</h2>
+        <div class="doc-table-wrap">
+          <table class="doc-table">
+            <thead><tr><th>File</th><th>Purpose</th></tr></thead>
+            <tbody>
+              <tr><td><span class="ic">next.config.ts</span></td><td>Turbopack enabled, image remote patterns, strict CSP headers</td></tr>
+              <tr><td><span class="ic">src/lib/auth.ts</span></td><td>Auth.js configuration with GitHub and Google providers, Prisma adapter</td></tr>
+              <tr><td><span class="ic">src/lib/db.ts</span></td><td>Prisma client singleton — safe for use in both server components and route handlers</td></tr>
+              <tr><td><span class="ic">src/lib/env.ts</span></td><td>t3-env schema validating all environment variables at startup</td></tr>
+              <tr><td><span class="ic">src/middleware.ts</span></td><td>Auth.js session middleware protecting the <span class="ic">(auth)</span> route group</td></tr>
+              <tr><td><span class="ic">prisma/schema.prisma</span></td><td>User, Account, Session, VerificationToken models for Auth.js compatibility</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="doc-h2" id="nj-scripts">Available scripts</h2>
+        <div class="doc-table-wrap">
+          <table class="doc-table">
+            <thead><tr><th>Script</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><span class="ic">bun run dev</span></td><td>Start dev server with Turbopack</td></tr>
+              <tr><td><span class="ic">bun run build</span></td><td>Production build (standalone output)</td></tr>
+              <tr><td><span class="ic">bun run start</span></td><td>Start the compiled production server</td></tr>
+              <tr><td><span class="ic">bun run db:push</span></td><td>Push schema changes to DB (dev)</td></tr>
+              <tr><td><span class="ic">bun run db:migrate</span></td><td>Apply versioned migrations (production)</td></tr>
+              <tr><td><span class="ic">bun run db:studio</span></td><td>Open Prisma Studio at localhost:5555</td></tr>
+              <tr><td><span class="ic">bun run lint</span></td><td>Run ESLint</td></tr>
+              <tr><td><span class="ic">bun run typecheck</span></td><td>Run tsc --noEmit</td></tr>
+              <tr><td><span class="ic">bun run test</span></td><td>Run Vitest unit tests</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="doc-h2" id="nj-env">Environment variables</h2>
+        <div class="doc-table-wrap">
+          <table class="doc-table">
+            <thead><tr><th>Variable</th><th>Required</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><span class="ic">NEXTAUTH_URL</span></td><td>Production only</td><td>Full canonical URL of your site, e.g. <span class="ic">https://myapp.com</span></td></tr>
+              <tr><td><span class="ic">AUTH_SECRET</span></td><td>Yes</td><td>Random 32-byte hex string for signing JWTs. Generate with <span class="ic">openssl rand -hex 32</span></td></tr>
+              <tr><td><span class="ic">DATABASE_URL</span></td><td>Yes</td><td>PostgreSQL connection string</td></tr>
+              <tr><td><span class="ic">GITHUB_CLIENT_ID</span></td><td>If using GitHub auth</td><td>GitHub OAuth App client ID</td></tr>
+              <tr><td><span class="ic">GITHUB_CLIENT_SECRET</span></td><td>If using GitHub auth</td><td>GitHub OAuth App client secret</td></tr>
+              <tr><td><span class="ic">GOOGLE_CLIENT_ID</span></td><td>If using Google auth</td><td>Google OAuth 2.0 client ID</td></tr>
+              <tr><td><span class="ic">GOOGLE_CLIENT_SECRET</span></td><td>If using Google auth</td><td>Google OAuth 2.0 client secret</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="doc-nav">
+          <a href="#" class="doc-nav-card" data-section="upgrade">
+            <div class="doc-nav-dir">Previous</div>
+            <div class="doc-nav-title">quickforge upgrade</div>
+          </a>
+          <a href="#" class="doc-nav-card next" data-section="react-template">
+            <div class="doc-nav-dir">Next</div>
+            <div class="doc-nav-title">React SPA</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECTION: REACT SPA TEMPLATE                                   -->
+      <!-- ============================================================ -->
+      <div id="section-react-template" style="display:none;">
+        <div class="breadcrumb">
+          <span class="bc-item">Templates</span>
+          <span class="bc-sep">/</span>
+          <span class="bc-current">React SPA</span>
+        </div>
+        <h1 class="doc-h1">React SPA template</h1>
+        <p class="doc-lead">Client-rendered application with Vite 6, TanStack Router, React Query, and Tailwind CSS v4. Ideal for dashboards, admin panels, and applications where SSR is not required.</p>
+
+        <h2 class="doc-h2" id="react-includes">What's included</h2>
+        <p class="doc-p"><strong>Vite 6.3</strong> for lightning-fast dev server HMR and optimised production builds with code splitting.</p>
+        <p class="doc-p"><strong>React 19</strong> with concurrent features and the new compiler enabled via the Vite plugin.</p>
+        <p class="doc-p"><strong>TypeScript 5.5</strong> in strict mode.</p>
+        <p class="doc-p"><strong>TanStack Router v1</strong> with file-based routing. Create a file in <span class="ic">src/routes/</span> and the route is automatically registered.</p>
+        <p class="doc-p"><strong>React Query v5</strong> (TanStack Query) for server state management, with a pre-configured query client and devtools.</p>
+        <p class="doc-p"><strong>Axios</strong> with request/response interceptors pre-wired for authentication header injection and 401 redirect handling.</p>
+        <p class="doc-p"><strong>Tailwind CSS v4</strong> with CSS-first configuration.</p>
+        <p class="doc-p"><strong>Vitest + Testing Library</strong> for unit and component tests.</p>
+        <p class="doc-p"><strong>Storybook 8</strong> pre-configured with the Vite builder for component development in isolation.</p>
+        <p class="doc-p"><strong>ESLint flat config + Prettier</strong> with React-specific rules.</p>
+
+        <h2 class="doc-h2" id="react-scaffold">Scaffold command</h2>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body">npx quickforge create my-dashboard --stack react-spa</div>
+        </div>
+
+        <h2 class="doc-h2" id="react-routing">Routing</h2>
+        <p class="doc-p">TanStack Router uses file-based routing. The directory structure under <span class="ic">src/routes/</span> maps directly to URL paths:</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">tree</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body">src/routes/
+├── __root.tsx          <span class="cm"># Root layout (navbar, providers)</span>
+├── index.tsx           <span class="cm"># /</span>
+├── login.tsx           <span class="cm"># /login</span>
+├── dashboard/
+│   ├── index.tsx       <span class="cm"># /dashboard</span>
+│   └── settings.tsx    <span class="cm"># /dashboard/settings</span>
+└── _auth.tsx           <span class="cm"># Layout route — auth guard</span></div>
+        </div>
+
+        <h2 class="doc-h2" id="react-api-client">API client</h2>
+        <p class="doc-p">The scaffold includes a pre-configured Axios instance in <span class="ic">src/lib/api.ts</span> with authentication header injection:</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">typescript</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body"><span class="kw">import</span> axios <span class="kw">from</span> <span class="str">"axios"</span>;
+
+<span class="kw">export const</span> api = axios.<span class="fn">create</span>({
+  baseURL: <span class="fn">import</span>.meta.env.VITE_API_URL,
+  withCredentials: <span class="kw">true</span>,
+});
+
+api.interceptors.request.<span class="fn">use</span>((config) => {
+  <span class="kw">const</span> token = localStorage.<span class="fn">getItem</span>(<span class="str">"access_token"</span>);
+  <span class="kw">if</span> (token) config.headers.Authorization = <span class="str">`Bearer <span class="lit">${token}</span>`</span>;
+  <span class="kw">return</span> config;
+});
+
+api.interceptors.response.<span class="fn">use</span>(
+  (res) => res,
+  (err) => {
+    <span class="kw">if</span> (err.response?.status === <span class="lit">401</span>) {
+      window.location.<span class="fn">assign</span>(<span class="str">"/login"</span>);
+    }
+    <span class="kw">return</span> Promise.<span class="fn">reject</span>(err);
+  }
+);</div>
+        </div>
+
+        <h2 class="doc-h2" id="react-keyfiles">Key files</h2>
+        <div class="doc-table-wrap">
+          <table class="doc-table">
+            <thead><tr><th>File</th><th>Purpose</th></tr></thead>
+            <tbody>
+              <tr><td><span class="ic">src/lib/api.ts</span></td><td>Configured Axios instance with auth interceptors</td></tr>
+              <tr><td><span class="ic">src/lib/query-client.ts</span></td><td>React Query client with default retry and stale-time settings</td></tr>
+              <tr><td><span class="ic">src/routes/__root.tsx</span></td><td>Root layout providing React Query and router contexts</td></tr>
+              <tr><td><span class="ic">vite.config.ts</span></td><td>Vite config with TanStack Router plugin and path aliases</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="doc-h2" id="react-env">Environment variables</h2>
+        <div class="doc-table-wrap">
+          <table class="doc-table">
+            <thead><tr><th>Variable</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><span class="ic">VITE_API_URL</span></td><td>Base URL of the backend API, e.g. <span class="ic">http://localhost:4000</span></td></tr>
+              <tr><td><span class="ic">VITE_APP_URL</span></td><td>Full URL of the SPA, used for OAuth redirect URIs</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-info">
+          <svg class="callout-icon ci-info" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          <span>The React SPA template expects a separate API server. Pair it with the Node.js API template (<span class="ic">--stack node-express</span>) for a full-stack setup in a monorepo or separate repositories.</span>
+        </div>
+
+        <div class="doc-nav">
+          <a href="#" class="doc-nav-card" data-section="nextjs-template">
+            <div class="doc-nav-dir">Previous</div>
+            <div class="doc-nav-title">Next.js 15</div>
+          </a>
+          <a href="#" class="doc-nav-card next" data-section="node-template">
+            <div class="doc-nav-dir">Next</div>
+            <div class="doc-nav-title">Node.js API</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECTION: NODE.JS API TEMPLATE                                 -->
+      <!-- ============================================================ -->
+      <div id="section-node-template" style="display:none;">
+        <div class="breadcrumb">
+          <span class="bc-item">Templates</span>
+          <span class="bc-sep">/</span>
+          <span class="bc-current">Node.js API</span>
+        </div>
+        <h1 class="doc-h1">Node.js API template</h1>
+        <p class="doc-lead">Lightweight, type-safe REST and RPC API using Hono v4 and tRPC v11, with Drizzle ORM and Zod validation. Optimised for edge deployment and low cold-start times.</p>
+
+        <h2 class="doc-h2" id="node-includes">What's included</h2>
+        <p class="doc-p"><strong>Hono v4</strong> for HTTP routing. Hono runs on Node.js, Bun, Cloudflare Workers, and Deno — scaffolded with the Node.js adapter by default.</p>
+        <p class="doc-p"><strong>tRPC v11</strong> for end-to-end type-safe RPC procedures, with a Hono adapter for sharing the same HTTP server.</p>
+        <p class="doc-p"><strong>Zod v3</strong> for input validation on all routes and tRPC procedures.</p>
+        <p class="doc-p"><strong>Drizzle ORM</strong> with the <span class="ic">pg</span> driver for PostgreSQL. Schema is defined in TypeScript and migrations are generated with <span class="ic">drizzle-kit</span>.</p>
+        <p class="doc-p"><strong>JWT auth middleware</strong> using <span class="ic">hono/jwt</span>. Tokens are verified on protected routes and user context is typed via Hono's <span class="ic">Variables</span> generic.</p>
+        <p class="doc-p"><strong>OpenAPI spec generation</strong> via <span class="ic">@hono/zod-openapi</span>. The <span class="ic">/docs</span> route serves a Scalar UI.</p>
+        <p class="doc-p"><strong>Upstash Redis</strong> (optional, via <span class="ic">--features redis</span>) for rate limiting and caching.</p>
+        <p class="doc-p"><strong>Vitest</strong> for unit and integration tests with a lightweight in-memory test database.</p>
+        <p class="doc-p"><strong>GitHub Actions CI</strong> running tests and a Docker build on every push.</p>
+
+        <h2 class="doc-h2" id="node-scaffold">Scaffold command</h2>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body">npx quickforge create my-api \
+  --stack node-express \
+  --db postgresql \
+  --orm drizzle</div>
+        </div>
+
+        <h2 class="doc-h2" id="node-router">Router structure</h2>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">tree</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body">src/
+├── routers/
+│   ├── index.ts        <span class="cm"># Root Hono app — mounts all sub-routers</span>
+│   ├── auth.ts         <span class="cm"># POST /auth/login, POST /auth/refresh</span>
+│   ├── users.ts        <span class="cm"># GET/POST/PATCH/DELETE /users</span>
+│   └── health.ts       <span class="cm"># GET /health — used by Railway & Docker</span>
+├── trpc/
+│   ├── router.ts       <span class="cm"># Root tRPC router</span>
+│   ├── procedures/
+│   │   └── user.ts     <span class="cm"># user.list, user.byId, user.create</span>
+│   └── context.ts      <span class="cm"># tRPC context with db and user</span>
+├── db/
+│   ├── schema.ts       <span class="cm"># Drizzle table definitions</span>
+│   └── index.ts        <span class="cm"># Drizzle client singleton</span>
+├── middleware/
+│   └── auth.ts         <span class="cm"># JWT verification middleware</span>
+└── index.ts            <span class="cm"># Server entry point</span></div>
+        </div>
+
+        <h2 class="doc-h2" id="node-validation">Request validation</h2>
+        <p class="doc-p">All routes use Zod schemas via the <span class="ic">@hono/zod-validator</span> middleware for automatic request validation and typed context:</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">typescript</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body"><span class="kw">import</span> { zValidator } <span class="kw">from</span> <span class="str">"@hono/zod-validator"</span>;
+<span class="kw">import</span> { z } <span class="kw">from</span> <span class="str">"zod"</span>;
+
+<span class="kw">const</span> createUserSchema = z.<span class="fn">object</span>({
+  email: z.<span class="fn">string</span>().<span class="fn">email</span>(),
+  name:  z.<span class="fn">string</span>().<span class="fn">min</span>(<span class="lit">2</span>).<span class="fn">max</span>(<span class="lit">100</span>),
+});
+
+users.<span class="fn">post</span>(<span class="str">"/"</span>, <span class="fn">zValidator</span>(<span class="str">"json"</span>, createUserSchema), <span class="kw">async</span> (c) => {
+  <span class="kw">const</span> { email, name } = c.<span class="fn">req</span>.<span class="fn">valid</span>(<span class="str">"json"</span>); <span class="cm">// fully typed</span>
+  <span class="kw">const</span> user = <span class="kw">await</span> db.<span class="fn">insert</span>(users).<span class="fn">values</span>({ email, name }).<span class="fn">returning</span>();
+  <span class="kw">return</span> c.<span class="fn">json</span>(user[<span class="lit">0</span>], <span class="lit">201</span>);
+});</div>
+        </div>
+
+        <h2 class="doc-h2" id="node-keyfiles">Key files</h2>
+        <div class="doc-table-wrap">
+          <table class="doc-table">
+            <thead><tr><th>File</th><th>Purpose</th></tr></thead>
+            <tbody>
+              <tr><td><span class="ic">src/index.ts</span></td><td>Server entry — creates Hono app, mounts tRPC, starts listener</td></tr>
+              <tr><td><span class="ic">src/db/schema.ts</span></td><td>Drizzle table definitions shared across routers and tRPC</td></tr>
+              <tr><td><span class="ic">src/middleware/auth.ts</span></td><td>JWT bearer token verification and user context injection</td></tr>
+              <tr><td><span class="ic">drizzle.config.ts</span></td><td>Drizzle Kit config pointing to the schema and migrations directory</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="doc-h2" id="node-env">Environment variables</h2>
+        <div class="doc-table-wrap">
+          <table class="doc-table">
+            <thead><tr><th>Variable</th><th>Required</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><span class="ic">DATABASE_URL</span></td><td>Yes</td><td>PostgreSQL connection string</td></tr>
+              <tr><td><span class="ic">JWT_SECRET</span></td><td>Yes</td><td>Secret key for signing JWTs. Generate with <span class="ic">openssl rand -hex 32</span></td></tr>
+              <tr><td><span class="ic">PORT</span></td><td>No</td><td>HTTP port (default: <span class="ic">4000</span>)</td></tr>
+              <tr><td><span class="ic">REDIS_URL</span></td><td>Optional</td><td>Upstash Redis REST URL — required only if the <span class="ic">redis</span> integration is added</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="doc-nav">
+          <a href="#" class="doc-nav-card" data-section="react-template">
+            <div class="doc-nav-dir">Previous</div>
+            <div class="doc-nav-title">React SPA</div>
+          </a>
+          <a href="#" class="doc-nav-card next" data-section="svelte-template">
+            <div class="doc-nav-dir">Next</div>
+            <div class="doc-nav-title">SvelteKit</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECTION: SVELTEKIT TEMPLATE                                   -->
+      <!-- ============================================================ -->
+      <div id="section-svelte-template" style="display:none;">
+        <div class="breadcrumb">
+          <span class="bc-item">Templates</span>
+          <span class="bc-sep">/</span>
+          <span class="bc-current">SvelteKit</span>
+        </div>
+        <h1 class="doc-h1">SvelteKit template</h1>
+        <p class="doc-lead">Full-stack SvelteKit 2 application with Svelte 5 runes, Lucia Auth, Drizzle ORM, and adapter-auto for zero-config deployment to Vercel, Netlify, or Node.js.</p>
+
+        <h2 class="doc-h2" id="svelte-includes">What's included</h2>
+        <p class="doc-p"><strong>SvelteKit 2.5</strong> with the file-system router, server-only load functions, and form actions.</p>
+        <p class="doc-p"><strong>Svelte 5.0</strong> with the new runes compiler mode enabled. State management uses <span class="ic">$state</span> and <span class="ic">$derived</span> instead of reactive stores.</p>
+        <p class="doc-p"><strong>TypeScript</strong> in strict mode with Svelte's generated type definitions for routes and load functions.</p>
+        <p class="doc-p"><strong>Tailwind CSS v4</strong> via the official Svelte plugin.</p>
+        <p class="doc-p"><strong>Lucia Auth v3</strong> for session management with the Drizzle adapter and database session storage.</p>
+        <p class="doc-p"><strong>Drizzle ORM</strong> with PostgreSQL for database access. Migrations managed with <span class="ic">drizzle-kit</span>.</p>
+        <p class="doc-p"><strong>adapter-auto</strong> for deployment without configuration — detects Vercel, Netlify, and Cloudflare Pages automatically, falling back to the Node.js adapter.</p>
+        <p class="doc-p"><strong>Playwright</strong> for end-to-end tests.</p>
+        <p class="doc-p"><strong>ESLint flat config + Prettier</strong> with the Svelte plugin.</p>
+
+        <h2 class="doc-h2" id="svelte-scaffold">Scaffold command</h2>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body">npx quickforge create my-site \
+  --stack sveltekit \
+  --db postgresql \
+  --orm drizzle</div>
+        </div>
+
+        <h2 class="doc-h2" id="svelte-runes">Svelte 5 runes</h2>
+        <p class="doc-p">The scaffold uses Svelte 5 runes throughout. Here is a typical component pattern using <span class="ic">$state</span> and <span class="ic">$derived</span>:</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">svelte</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body"><span class="cm">&lt;!-- src/lib/components/Counter.svelte --&gt;</span>
+&lt;<span class="kw">script</span> lang=<span class="str">"ts"</span>&gt;
+  <span class="kw">let</span> count = $<span class="fn">state</span>(<span class="lit">0</span>);
+  <span class="kw">let</span> doubled = $<span class="fn">derived</span>(() =&gt; count * <span class="lit">2</span>);
+
+  <span class="kw">function</span> <span class="fn">increment</span>() {
+    count += <span class="lit">1</span>;
+  }
+&lt;/<span class="kw">script</span>&gt;
+
+&lt;<span class="kw">button</span> onclick={increment}&gt;
+  Count: {count} — Doubled: {doubled}
+&lt;/<span class="kw">button</span>&gt;</div>
+        </div>
+
+        <h2 class="doc-h2" id="svelte-actions">Form actions</h2>
+        <p class="doc-p">Server-side form actions handle mutations without client-side JavaScript. The scaffold includes a pre-built login action demonstrating Lucia session creation:</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">typescript</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body"><span class="cm">// src/routes/login/+page.server.ts</span>
+<span class="kw">import</span> { fail, redirect } <span class="kw">from</span> <span class="str">"@sveltejs/kit"</span>;
+<span class="kw">import</span> { lucia } <span class="kw">from</span> <span class="str">"$lib/server/auth"</span>;
+<span class="kw">import</span> { db } <span class="kw">from</span> <span class="str">"$lib/server/db"</span>;
+
+<span class="kw">export const</span> actions = {
+  <span class="kw">default</span>: <span class="kw">async</span> ({ request, cookies }) => {
+    <span class="kw">const</span> formData = <span class="kw">await</span> request.<span class="fn">formData</span>();
+    <span class="kw">const</span> email = formData.<span class="fn">get</span>(<span class="str">"email"</span>) <span class="kw">as</span> string;
+
+    <span class="kw">const</span> user = <span class="kw">await</span> db.query.users.<span class="fn">findFirst</span>({
+      where: (u, { eq }) => eq(u.email, email),
+    });
+    <span class="kw">if</span> (!user) <span class="kw">return</span> <span class="fn">fail</span>(<span class="lit">400</span>, { message: <span class="str">"Invalid credentials"</span> });
+
+    <span class="kw">const</span> session = <span class="kw">await</span> lucia.<span class="fn">createSession</span>(user.id, {});
+    <span class="kw">const</span> sessionCookie = lucia.<span class="fn">createSessionCookie</span>(session.id);
+    cookies.<span class="fn">set</span>(sessionCookie.name, sessionCookie.value, {
+      path: <span class="str">"."</span>,
+      ...sessionCookie.attributes,
+    });
+    <span class="fn">redirect</span>(<span class="lit">302</span>, <span class="str">"/dashboard"</span>);
+  },
+};</div>
+        </div>
+
+        <h2 class="doc-h2" id="svelte-keyfiles">Key files</h2>
+        <div class="doc-table-wrap">
+          <table class="doc-table">
+            <thead><tr><th>File</th><th>Purpose</th></tr></thead>
+            <tbody>
+              <tr><td><span class="ic">src/lib/server/auth.ts</span></td><td>Lucia Auth instance with Drizzle adapter</td></tr>
+              <tr><td><span class="ic">src/lib/server/db.ts</span></td><td>Drizzle client singleton</td></tr>
+              <tr><td><span class="ic">src/hooks.server.ts</span></td><td>Session validation and user context injection on every request</td></tr>
+              <tr><td><span class="ic">svelte.config.js</span></td><td>adapter-auto, Vite config, TypeScript preprocessor</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="doc-h2" id="svelte-env">Environment variables</h2>
+        <div class="doc-table-wrap">
+          <table class="doc-table">
+            <thead><tr><th>Variable</th><th>Required</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><span class="ic">DATABASE_URL</span></td><td>Yes</td><td>PostgreSQL connection string</td></tr>
+              <tr><td><span class="ic">AUTH_SECRET</span></td><td>Yes</td><td>Secret key for Lucia session tokens. Generate with <span class="ic">openssl rand -hex 32</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="doc-nav">
+          <a href="#" class="doc-nav-card" data-section="node-template">
+            <div class="doc-nav-dir">Previous</div>
+            <div class="doc-nav-title">Node.js API</div>
+          </a>
+          <a href="#" class="doc-nav-card next" data-section="config-file">
+            <div class="doc-nav-dir">Next</div>
+            <div class="doc-nav-title">quickforge.config.ts</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECTION: CONFIG FILE                                          -->
+      <!-- ============================================================ -->
+      <div id="section-config-file" style="display:none;">
+        <div class="breadcrumb">
+          <span class="bc-item">Configuration</span>
+          <span class="bc-sep">/</span>
+          <span class="bc-current">quickforge.config.ts</span>
+        </div>
+        <h1 class="doc-h1">quickforge.config.ts</h1>
+        <p class="doc-lead">Optional project-level configuration file. Placed at the project root, it customises scaffold behaviour, sets default flags, and loads plugins — so you don't have to repeat long CLI flags on every invocation.</p>
+
+        <h2 class="doc-h2" id="cfg-create">Creating the config</h2>
+        <p class="doc-p">Generate a fully commented config file with the <span class="ic">init config</span> command, or create it manually at the root of your project:</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body"><span class="cm"># Generate from template</span>
+quickforge init config
+
+<span class="cm"># Or create manually at ./quickforge.config.ts</span></div>
+        </div>
+
+        <h2 class="doc-h2" id="cfg-example">Full example</h2>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">typescript</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body"><span class="kw">import</span> { defineConfig } <span class="kw">from</span> <span class="str">"quickforge"</span>;
+
+<span class="kw">export default</span> <span class="fn">defineConfig</span>({
+  <span class="cm">/** Template / stack to use when no --stack flag is passed */</span>
+  stack: <span class="str">"next-js-v15"</span>,
+
+  <span class="cm">/** Authentication providers pre-selected */</span>
+  auth: [<span class="str">"github"</span>, <span class="str">"google"</span>],
+
+  <span class="cm">/** Database engine */</span>
+  database: <span class="str">"postgresql"</span>,
+
+  <span class="cm">/** ORM — "prisma" | "drizzle" */</span>
+  orm: <span class="str">"prisma"</span>,
+
+  <span class="cm">/** Package manager — "bun" | "npm" | "pnpm" */</span>
+  packageManager: <span class="str">"bun"</span>,
+
+  <span class="cm">/** Additional integrations included on every scaffold */</span>
+  features: [<span class="str">"analytics"</span>, <span class="str">"sentry"</span>],
+
+  <span class="cm">/** Plugins to load (see Plugins documentation) */</span>
+  plugins: [
+    <span class="cm">// "quickforge-plugin-shadcn",</span>
+  ],
+
+  <span class="cm">/** Output directory relative to cwd (default: project-name) */</span>
+  outputDir: <span class="str">"."</span>,
+
+  <span class="cm">/** Git configuration applied to the initialised repository */</span>
+  git: {
+    init: <span class="kw">true</span>,
+    defaultBranch: <span class="str">"main"</span>,
+    commitMessage: <span class="str">"chore: initial scaffold from QuickForge"</span>,
+  },
+});</div>
+        </div>
+
+        <h2 class="doc-h2" id="cfg-options">Config options</h2>
+        <div class="doc-table-wrap">
+          <table class="doc-table">
+            <thead><tr><th>Option</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><span class="ic">stack</span></td><td>string</td><td><span class="ic">"next-js-v15"</span></td><td>Default template. Overridden by <span class="ic">--stack</span> CLI flag.</td></tr>
+              <tr><td><span class="ic">auth</span></td><td>string[]</td><td><span class="ic">[]</span></td><td>OAuth providers to pre-select.</td></tr>
+              <tr><td><span class="ic">database</span></td><td>string</td><td><span class="ic">undefined</span></td><td>Database type. Overridden by <span class="ic">--db</span>.</td></tr>
+              <tr><td><span class="ic">orm</span></td><td>string</td><td><span class="ic">"prisma"</span></td><td>ORM. Overridden by <span class="ic">--orm</span>.</td></tr>
+              <tr><td><span class="ic">packageManager</span></td><td>string</td><td><span class="ic">"bun"</span></td><td>Package manager. Overridden by <span class="ic">--pm</span>.</td></tr>
+              <tr><td><span class="ic">features</span></td><td>string[]</td><td><span class="ic">[]</span></td><td>Integrations to include by default.</td></tr>
+              <tr><td><span class="ic">plugins</span></td><td>string[]</td><td><span class="ic">[]</span></td><td>Plugin package names to load at scaffold time.</td></tr>
+              <tr><td><span class="ic">outputDir</span></td><td>string</td><td>project name</td><td>Directory to write the project into.</td></tr>
+              <tr><td><span class="ic">git.init</span></td><td>boolean</td><td><span class="ic">true</span></td><td>Initialise a Git repository.</td></tr>
+              <tr><td><span class="ic">git.defaultBranch</span></td><td>string</td><td><span class="ic">"main"</span></td><td>Name of the initial branch.</td></tr>
+              <tr><td><span class="ic">git.commitMessage</span></td><td>string</td><td>QuickForge default</td><td>Message for the initial commit.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="doc-h2" id="cfg-precedence">Using config with CLI</h2>
+        <p class="doc-p">CLI flags always take precedence over config file values. The config file sets project-wide defaults; flags let you override individual options for a specific invocation without editing the file.</p>
+
+        <div class="callout callout-info">
+          <svg class="callout-icon ci-info" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          <span>The config file is completely optional. Every option it exposes can be passed directly as a CLI flag to <span class="ic">quickforge create</span>. The file is most useful in team environments where you want consistent defaults across all developers.</span>
+        </div>
+
+        <div class="doc-nav">
+          <a href="#" class="doc-nav-card" data-section="svelte-template">
+            <div class="doc-nav-dir">Previous</div>
+            <div class="doc-nav-title">SvelteKit</div>
+          </a>
+          <a href="#" class="doc-nav-card next" data-section="env-vars">
+            <div class="doc-nav-dir">Next</div>
+            <div class="doc-nav-title">Environment variables</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECTION: ENVIRONMENT VARIABLES                                -->
+      <!-- ============================================================ -->
+      <div id="section-env-vars" style="display:none;">
+        <div class="breadcrumb">
+          <span class="bc-item">Configuration</span>
+          <span class="bc-sep">/</span>
+          <span class="bc-current">Environment variables</span>
+        </div>
+        <h1 class="doc-h1">Environment variables</h1>
+        <p class="doc-lead">QuickForge uses t3-env to validate and type all environment variables at build time, preventing runtime crashes from missing or mistyped configuration values.</p>
+
+        <h2 class="doc-h2" id="env-how">How it works</h2>
+        <p class="doc-p">The <span class="ic">src/lib/env.ts</span> file defines a Zod schema for every environment variable your application needs. On startup — both in development and in the Next.js build step — t3-env validates all variables against the schema. If a required variable is missing or fails validation, the process exits with a descriptive error rather than crashing silently at the first runtime access.</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">typescript</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body"><span class="cm">// src/lib/env.ts</span>
+<span class="kw">import</span> { createEnv } <span class="kw">from</span> <span class="str">"@t3-oss/env-nextjs"</span>;
+<span class="kw">import</span> { z } <span class="kw">from</span> <span class="str">"zod"</span>;
+
+<span class="kw">export const</span> env = <span class="fn">createEnv</span>({
+  server: {
+    AUTH_SECRET:           z.<span class="fn">string</span>().<span class="fn">min</span>(<span class="lit">32</span>),
+    DATABASE_URL:          z.<span class="fn">string</span>().<span class="fn">url</span>(),
+    GITHUB_CLIENT_ID:      z.<span class="fn">string</span>().<span class="fn">optional</span>(),
+    GITHUB_CLIENT_SECRET:  z.<span class="fn">string</span>().<span class="fn">optional</span>(),
+  },
+  client: {
+    NEXT_PUBLIC_APP_URL:   z.<span class="fn">string</span>().<span class="fn">url</span>(),
+  },
+  runtimeEnv: {
+    AUTH_SECRET:           process.env.AUTH_SECRET,
+    DATABASE_URL:          process.env.DATABASE_URL,
+    GITHUB_CLIENT_ID:      process.env.GITHUB_CLIENT_ID,
+    GITHUB_CLIENT_SECRET:  process.env.GITHUB_CLIENT_SECRET,
+    NEXT_PUBLIC_APP_URL:   process.env.NEXT_PUBLIC_APP_URL,
+  },
+});</div>
+        </div>
+
+        <h2 class="doc-h2" id="env-server-vs-client">Server vs client variables</h2>
+        <p class="doc-p">Next.js enforces a strict boundary between server and client environment variables. Variables in the <span class="ic">server</span> block are never sent to the browser. Variables in the <span class="ic">client</span> block must be prefixed with <span class="ic">NEXT_PUBLIC_</span> to be available in Client Components.</p>
+
+        <h2 class="doc-h2" id="env-adding">Adding a new variable</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <div class="step-title">Add to .env.local</div>
+              <div class="step-desc">Add the variable with its value to your local <span class="ic">.env.local</span> file. This file is gitignored and never committed.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <div class="step-title">Add to .env.example</div>
+              <div class="step-desc">Add the key without a value to <span class="ic">.env.example</span> with a comment describing where to get the value. This file is committed.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <div class="step-title">Add to env.ts schema</div>
+              <div class="step-desc">Add the variable to the appropriate <span class="ic">server</span> or <span class="ic">client</span> block with a Zod validator, and add it to the <span class="ic">runtimeEnv</span> map.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <div class="step-title">Use via env import</div>
+              <div class="step-desc">Import and use the typed value: <span class="ic">import { env } from "@/lib/env"; env.MY_VAR</span></div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="doc-h2" id="env-example-file">Complete .env.example</h2>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body"><span class="cm"># ── Application ───────────────────────────────────────────────</span>
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+
+<span class="cm"># ── Auth.js ───────────────────────────────────────────────────</span>
+<span class="cm"># Generate: openssl rand -hex 32</span>
+AUTH_SECRET=
+
+<span class="cm"># Required in production only</span>
+NEXTAUTH_URL=https://myapp.com
+
+<span class="cm"># ── Database ──────────────────────────────────────────────────</span>
+<span class="cm"># Format: postgresql://USER:PASSWORD@HOST:PORT/DATABASE</span>
+DATABASE_URL=
+
+<span class="cm"># ── GitHub OAuth ──────────────────────────────────────────────</span>
+<span class="cm"># Create at: github.com/settings/applications/new</span>
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
+
+<span class="cm"># ── Google OAuth ──────────────────────────────────────────────</span>
+<span class="cm"># Create at: console.cloud.google.com</span>
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=</div>
+        </div>
+
+        <h2 class="doc-h2" id="env-cicd">CI/CD secrets</h2>
+        <p class="doc-p">For <strong>GitHub Actions</strong>, add secrets at Settings → Secrets and variables → Actions. Reference them in workflows with <span class="ic">${{ secrets.DATABASE_URL }}</span>.</p>
+        <p class="doc-p">For <strong>Vercel</strong>, set variables in the project dashboard under Settings → Environment Variables. Vercel injects them at build time and runtime automatically.</p>
+        <p class="doc-p">For <strong>Railway</strong>, use <span class="ic">railway variables set KEY=value</span> from the CLI or the Railway dashboard Variables tab.</p>
+
+        <div class="callout callout-warn">
+          <svg class="callout-icon ci-warn" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span>Never commit <span class="ic">.env.local</span> or any file containing real secrets. Only <span class="ic">.env.example</span> — which contains no values — should be tracked by Git. The scaffold includes a <span class="ic">.gitignore</span> entry for all <span class="ic">.env*.local</span> files.</span>
+        </div>
+
+        <div class="doc-nav">
+          <a href="#" class="doc-nav-card" data-section="config-file">
+            <div class="doc-nav-dir">Previous</div>
+            <div class="doc-nav-title">quickforge.config.ts</div>
+          </a>
+          <a href="#" class="doc-nav-card next" data-section="plugins">
+            <div class="doc-nav-dir">Next</div>
+            <div class="doc-nav-title">Plugins</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECTION: PLUGINS                                              -->
+      <!-- ============================================================ -->
+      <div id="section-plugins" style="display:none;">
+        <div class="breadcrumb">
+          <span class="bc-item">Configuration</span>
+          <span class="bc-sep">/</span>
+          <span class="bc-current">Plugins</span>
+        </div>
+        <h1 class="doc-h1">Plugins</h1>
+        <p class="doc-lead">QuickForge plugins extend the scaffold engine with custom integrations, file generators, and post-scaffold hooks. Install a plugin package, register it in your config, and it runs as part of the scaffold pipeline.</p>
+
+        <h2 class="doc-h2" id="plugins-install">Installing a plugin</h2>
+        <p class="doc-p">Plugins are npm packages. Install the package, then add it to the <span class="ic">plugins</span> array in your <span class="ic">quickforge.config.ts</span>:</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body">npm install quickforge-plugin-shadcn</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">typescript</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body"><span class="cm">// quickforge.config.ts</span>
+<span class="kw">export default</span> <span class="fn">defineConfig</span>({
+  plugins: [<span class="str">"quickforge-plugin-shadcn"</span>],
+});</div>
+        </div>
+
+        <h2 class="doc-h2" id="plugins-official">Official plugins</h2>
+        <div class="doc-table-wrap">
+          <table class="doc-table">
+            <thead><tr><th>Package</th><th>Description</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><span class="ic">quickforge-plugin-shadcn</span></td>
+                <td>Installs and configures shadcn/ui with the New York theme and a default component set</td>
+                <td><span class="badge badge-soon">Coming soon</span></td>
+              </tr>
+              <tr>
+                <td><span class="ic">quickforge-plugin-trpc</span></td>
+                <td>Scaffolds a tRPC router with full-stack type sharing between Next.js server and client</td>
+                <td><span class="badge badge-soon">Coming soon</span></td>
+              </tr>
+              <tr>
+                <td><span class="ic">quickforge-plugin-storybook</span></td>
+                <td>Adds Storybook 8 with the Vite builder, auto-discovered stories, and a CI workflow step</td>
+                <td><span class="badge badge-soon">Coming soon</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="doc-h2" id="plugins-writing">Writing a plugin</h2>
+        <p class="doc-p">A QuickForge plugin is a Node.js module that exports an object conforming to the <span class="ic">QuickForgePlugin</span> interface:</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">typescript</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body"><span class="cm">// Plugin interface (from "quickforge/plugin")</span>
+<span class="kw">export interface</span> QuickForgePlugin {
+  name: string;
+  <span class="fn">onAfterScaffold</span>?(ctx: ScaffoldContext): Promise&lt;<span class="kw">void</span>&gt;;
+  <span class="fn">onFileWrite</span>?(file: FileWriteEvent): Promise&lt;FileWriteEvent&gt;;
+  <span class="fn">onDependencyInstall</span>?(deps: string[]): Promise&lt;string[]&gt;;
+}
+
+<span class="cm">// Minimal example plugin that writes a CHANGELOG.md</span>
+<span class="kw">import type</span> { QuickForgePlugin } <span class="kw">from</span> <span class="str">"quickforge/plugin"</span>;
+<span class="kw">import</span> { writeFile } <span class="kw">from</span> <span class="str">"node:fs/promises"</span>;
+<span class="kw">import</span> { join } <span class="kw">from</span> <span class="str">"node:path"</span>;
+
+<span class="kw">const</span> changelogPlugin: QuickForgePlugin = {
+  name: <span class="str">"changelog"</span>,
+  <span class="kw">async</span> <span class="fn">onAfterScaffold</span>(ctx) {
+    <span class="kw">await</span> <span class="fn">writeFile</span>(
+      <span class="fn">join</span>(ctx.outputDir, <span class="str">"CHANGELOG.md"</span>),
+      <span class="str">`# Changelog\n\n## 0.1.0\n\n- Initial scaffold\n`</span>
+    );
+  },
+};
+
+<span class="kw">export default</span> changelogPlugin;</div>
+        </div>
+
+        <h2 class="doc-h2" id="plugins-hooks">Plugin lifecycle hooks</h2>
+        <div class="doc-table-wrap">
+          <table class="doc-table">
+            <thead><tr><th>Hook</th><th>When it runs</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td><span class="ic">onBeforeScaffold</span></td><td>Before any files are written. Receives resolved config.</td><td><span class="badge badge-soon">Coming soon</span></td></tr>
+              <tr><td><span class="ic">onAfterScaffold</span></td><td>After all files are written and dependencies installed.</td><td><span class="badge badge-soon">Coming soon</span></td></tr>
+              <tr><td><span class="ic">onFileWrite</span></td><td>Called for each file before it is written. Can mutate content.</td><td><span class="badge badge-soon">Coming soon</span></td></tr>
+              <tr><td><span class="ic">onDependencyInstall</span></td><td>Called with the final dependency list. Can add or remove packages.</td><td><span class="badge badge-soon">Coming soon</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-info">
+          <svg class="callout-icon ci-info" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          <span>The plugin API is in active development. Hooks marked "Coming soon" are part of the v3.0 roadmap. Subscribe to the <a href="changelog.html">changelog</a> for release announcements.</span>
+        </div>
+
+        <div class="doc-nav">
+          <a href="#" class="doc-nav-card" data-section="env-vars">
+            <div class="doc-nav-dir">Previous</div>
+            <div class="doc-nav-title">Environment variables</div>
+          </a>
+          <a href="#" class="doc-nav-card next" data-section="vercel">
+            <div class="doc-nav-dir">Next</div>
+            <div class="doc-nav-title">Vercel</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECTION: VERCEL                                               -->
+      <!-- ============================================================ -->
+      <div id="section-vercel" style="display:none;">
+        <div class="breadcrumb">
+          <span class="bc-item">Deployment</span>
+          <span class="bc-sep">/</span>
+          <span class="bc-current">Vercel</span>
+        </div>
+        <h1 class="doc-h1">Deploy to Vercel</h1>
+        <p class="doc-lead">All QuickForge templates are optimised for Vercel deployment. The generated project includes a <span class="ic">vercel.json</span> and a GitHub Actions workflow that runs tests and deploys on every push to main.</p>
+
+        <h2 class="doc-h2" id="vercel-one-command">One-command deploy</h2>
+        <p class="doc-p">Install the Vercel CLI and deploy from the project root. The <span class="ic">vercel.json</span> in the scaffold configures the framework, region, and headers automatically.</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body"><span class="cm"># Install Vercel CLI</span>
+bun add -g vercel
+
+<span class="cm"># Preview deployment</span>
+vercel
+
+<span class="cm"># Production deployment</span>
+vercel --prod</div>
+        </div>
+
+        <h2 class="doc-h2" id="vercel-github">Connecting GitHub</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <div class="step-title">Push to GitHub</div>
+              <div class="step-desc">Push your scaffolded project to a new GitHub repository.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <div class="step-title">Import on vercel.com</div>
+              <div class="step-desc">Go to vercel.com/new, select Import Git Repository, and choose your repository. Vercel auto-detects Next.js and configures the build settings.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <div class="step-title">Set environment variables</div>
+              <div class="step-desc">In the Vercel project settings under Environment Variables, add all keys from your <span class="ic">.env.example</span> with their production values.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <div class="step-title">Automatic deploys</div>
+              <div class="step-desc">Every push to <span class="ic">main</span> triggers a production deploy. Pull requests get a preview deployment with a unique URL for review.</div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="doc-h2" id="vercel-json">The included vercel.json</h2>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">json</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body">{
+  <span class="str">"framework"</span>: <span class="str">"nextjs"</span>,
+  <span class="str">"regions"</span>: [<span class="str">"iad1"</span>],
+  <span class="str">"headers"</span>: [
+    {
+      <span class="str">"source"</span>: <span class="str">"/(.*)"</span>,
+      <span class="str">"headers"</span>: [
+        { <span class="str">"key"</span>: <span class="str">"X-Frame-Options"</span>,          <span class="str">"value"</span>: <span class="str">"SAMEORIGIN"</span> },
+        { <span class="str">"key"</span>: <span class="str">"X-Content-Type-Options"</span>,    <span class="str">"value"</span>: <span class="str">"nosniff"</span> },
+        { <span class="str">"key"</span>: <span class="str">"Referrer-Policy"</span>,           <span class="str">"value"</span>: <span class="str">"strict-origin-when-cross-origin"</span> },
+        { <span class="str">"key"</span>: <span class="str">"Permissions-Policy"</span>,        <span class="str">"value"</span>: <span class="str">"camera=(), microphone=(), geolocation=()"</span> }
+      ]
+    }
+  ]
+}</div>
+        </div>
+
+        <h2 class="doc-h2" id="vercel-db">Database on Vercel</h2>
+        <div class="callout callout-info">
+          <svg class="callout-icon ci-info" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          <span>For the lowest-latency database on Vercel, use <strong>Vercel Postgres</strong> (powered by Neon) from the Vercel marketplace — it provisions in seconds and sets <span class="ic">DATABASE_URL</span> in your environment automatically. Alternatively, connect any external PostgreSQL provider by setting the connection string manually.</span>
+        </div>
+
+        <h2 class="doc-h2" id="vercel-actions">GitHub Actions workflow</h2>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">yaml</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body"><span class="cm"># .github/workflows/deploy.yml</span>
+name: CI / Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install --frozen-lockfile
+      - run: bun run typecheck
+      - run: bun run lint
+      - run: bun run test --run
+
+  deploy:
+    needs: ci
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: --prod</div>
+        </div>
+
+        <div class="doc-nav">
+          <a href="#" class="doc-nav-card" data-section="plugins">
+            <div class="doc-nav-dir">Previous</div>
+            <div class="doc-nav-title">Plugins</div>
+          </a>
+          <a href="#" class="doc-nav-card next" data-section="railway">
+            <div class="doc-nav-dir">Next</div>
+            <div class="doc-nav-title">Railway</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECTION: RAILWAY                                              -->
+      <!-- ============================================================ -->
+      <div id="section-railway" style="display:none;">
+        <div class="breadcrumb">
+          <span class="bc-item">Deployment</span>
+          <span class="bc-sep">/</span>
+          <span class="bc-current">Railway</span>
+        </div>
+        <h1 class="doc-h1">Deploy to Railway</h1>
+        <p class="doc-lead">Railway is an excellent fit for QuickForge Node.js API and full-stack templates. It provisions PostgreSQL and Redis alongside your service automatically, with no infrastructure configuration required.</p>
+
+        <h2 class="doc-h2" id="railway-cli">Deploy via CLI</h2>
+        <p class="doc-p">Install the Railway CLI and deploy from your project directory. Railway detects the Dockerfile in the scaffold and uses it for every subsequent deploy.</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body"><span class="cm"># Install Railway CLI</span>
+bun add -g @railway/cli
+
+<span class="cm"># Log in</span>
+railway login
+
+<span class="cm"># Initialise project (run once)</span>
+railway init
+
+<span class="cm"># Deploy</span>
+railway up</div>
+        </div>
+
+        <h2 class="doc-h2" id="railway-db">Provision a database</h2>
+        <p class="doc-p">Add a managed PostgreSQL instance to your Railway project. Railway automatically injects <span class="ic">DATABASE_URL</span> into your service's environment — no manual copy-paste required.</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body"><span class="cm"># Add PostgreSQL</span>
+railway add --database postgresql
+
+<span class="cm"># Add Redis (optional)</span>
+railway add --database redis</div>
+        </div>
+
+        <h2 class="doc-h2" id="railway-env">Environment variables</h2>
+        <p class="doc-p">Set application secrets from the CLI. Railway stores them encrypted and makes them available at runtime:</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body">railway variables set AUTH_SECRET=$(openssl rand -hex 32)
+railway variables set JWT_SECRET=$(openssl rand -hex 32)
+railway variables set NODE_ENV=production</div>
+        </div>
+
+        <h2 class="doc-h2" id="railway-dockerfile">The Dockerfile</h2>
+        <p class="doc-p">Railway detects the <span class="ic">Dockerfile</span> in your project root and uses it for builds. The scaffold's multi-stage Dockerfile produces a minimal production image — no additional Railway configuration is needed.</p>
+
+        <h2 class="doc-h2" id="railway-health">Healthcheck</h2>
+        <p class="doc-p">The Node.js API template includes a <span class="ic">/health</span> endpoint that Railway uses to determine whether a deploy succeeded before routing traffic:</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">typescript</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body"><span class="cm">// src/routers/health.ts</span>
+health.<span class="fn">get</span>(<span class="str">"/"</span>, (c) =>
+  c.<span class="fn">json</span>({ status: <span class="str">"ok"</span>, uptime: process.<span class="fn">uptime</span>() })
+);</div>
+        </div>
+
+        <div class="callout callout-info">
+          <svg class="callout-icon ci-info" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          <span>Railway supports private networking between services in the same project. The Node.js API template checks for a <span class="ic">RAILWAY_PRIVATE_DOMAIN</span> environment variable at startup and switches its database connection to the private network address when present, eliminating egress costs.</span>
+        </div>
+
+        <div class="doc-nav">
+          <a href="#" class="doc-nav-card" data-section="vercel">
+            <div class="doc-nav-dir">Previous</div>
+            <div class="doc-nav-title">Vercel</div>
+          </a>
+          <a href="#" class="doc-nav-card next" data-section="docker">
+            <div class="doc-nav-dir">Next</div>
+            <div class="doc-nav-title">Docker</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECTION: DOCKER                                               -->
+      <!-- ============================================================ -->
+      <div id="section-docker" style="display:none;">
+        <div class="breadcrumb">
+          <span class="bc-item">Deployment</span>
+          <span class="bc-sep">/</span>
+          <span class="bc-current">Docker</span>
+        </div>
+        <h1 class="doc-h1">Docker</h1>
+        <p class="doc-lead">Every QuickForge template ships with a production-optimised multi-stage Dockerfile and a <span class="ic">docker-compose.yml</span> for local development with Postgres and Redis.</p>
+
+        <h2 class="doc-h2" id="docker-file">The generated Dockerfile</h2>
+        <p class="doc-p">The scaffold produces a three-stage Dockerfile: <span class="ic">deps</span> installs production dependencies, <span class="ic">builder</span> runs the build, and <span class="ic">runner</span> copies only the compiled output into a minimal Alpine image.</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">dockerfile</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body"><span class="cm"># ── Stage 1: install dependencies ─────────────────────────────</span>
+FROM node:22-alpine AS deps
+RUN apk add --no-cache libc6-compat
+WORKDIR /app
+COPY package.json bun.lockb ./
+RUN npm install -g bun &amp;&amp; bun install --frozen-lockfile
+
+<span class="cm"># ── Stage 2: build ────────────────────────────────────────────</span>
+FROM node:22-alpine AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+ENV NEXT_TELEMETRY_DISABLED=1
+RUN npm install -g bun &amp;&amp; bun run build
+
+<span class="cm"># ── Stage 3: production runner ────────────────────────────────</span>
+FROM node:22-alpine AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+
+<span class="cm"># Create non-root user</span>
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser  --system --uid 1001 nextjs
+
+COPY --from=builder /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+USER nextjs
+EXPOSE 3000
+ENV PORT=3000
+CMD ["node", "server.js"]</div>
+        </div>
+
+        <h2 class="doc-h2" id="docker-build-run">Build and run</h2>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body"><span class="cm"># Build the image</span>
+docker build -t my-app .
+
+<span class="cm"># Run with your local env file</span>
+docker run -p 3000:3000 --env-file .env.local my-app</div>
+        </div>
+
+        <h2 class="doc-h2" id="docker-compose">docker-compose for local dev</h2>
+        <p class="doc-p">The scaffold includes a <span class="ic">docker-compose.yml</span> that starts your application alongside a PostgreSQL database and Redis instance:</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">yaml</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body">services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    env_file: .env.local
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: myapp
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres-data:</div>
+        </div>
+
+        <h2 class="doc-h2" id="docker-args">Build args</h2>
+        <div class="doc-table-wrap">
+          <table class="doc-table">
+            <thead><tr><th>Arg</th><th>Default</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><span class="ic">NODE_ENV</span></td><td><span class="ic">production</span></td><td>Node.js environment mode</td></tr>
+              <tr><td><span class="ic">NEXT_TELEMETRY_DISABLED</span></td><td><span class="ic">1</span></td><td>Disables Next.js telemetry in CI and Docker builds</td></tr>
+              <tr><td><span class="ic">PORT</span></td><td><span class="ic">3000</span></td><td>Port the server listens on inside the container</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-warn">
+          <svg class="callout-icon ci-warn" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span>The standalone Next.js output used in the Dockerfile requires <span class="ic">output: 'standalone'</span> in <span class="ic">next.config.ts</span>. This is already set in the QuickForge template — do not remove it or the Docker build will fail.</span>
+        </div>
+
+        <h2 class="doc-h2" id="docker-multiplatform">Multi-platform builds</h2>
+        <p class="doc-p">To build a single image for both AMD64 (Linux servers) and ARM64 (Apple Silicon, Graviton) use Docker Buildx:</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body">docker buildx build \
+  --platform linux/amd64,linux/arm64 \
+  --tag my-app:latest \
+  --push \
+  .</div>
+        </div>
+
+        <div class="doc-nav">
+          <a href="#" class="doc-nav-card" data-section="railway">
+            <div class="doc-nav-dir">Previous</div>
+            <div class="doc-nav-title">Railway</div>
+          </a>
+          <div></div>
         </div>
       </div>
 
@@ -596,10 +2075,8 @@ npx quickforge create my-blog \
       <div class="otp-list" id="otp-list">
         <a href="#what-is-quickforge" class="otp-link active">What is QuickForge</a>
         <a href="#design-philosophy"  class="otp-link">Design philosophy</a>
-        <a href="#installation"       class="otp-link">Installation</a>
-        <a href="#quickstart"         class="otp-link">Quickstart</a>
-        <a href="#cli-flags"          class="otp-link">CLI flags</a>
-        <a href="#project-structure"  class="otp-link">Project structure</a>
+        <a href="#how-it-works"       class="otp-link">How it works</a>
+        <a href="#available-stacks"   class="otp-link">Available stacks</a>
       </div>
     </aside>
 
@@ -609,7 +2086,7 @@ npx quickforge create my-blog \
     <div class="footer-inner">
       <div class="footer-brand">
         <span class="footer-name">QuickForge</span>
-        <span class="footer-copy">© 2024 QuickForge Engine</span>
+        <span class="footer-copy">&copy; 2024 QuickForge Engine</span>
       </div>
       <nav class="footer-nav">
         <a href="documentation.html" class="footer-nav-link">Documentation</a>
@@ -630,21 +2107,128 @@ npx quickforge create my-blog \
   <script>
     /* SIDEBAR NAVIGATION */
     const sidebarLinks = document.querySelectorAll('.sidebar-link[data-section]');
-    const navCards = document.querySelectorAll('.doc-nav-card[data-section]');
-    const sections = document.querySelectorAll('[id^="section-"]');
+    const navCards     = document.querySelectorAll('.doc-nav-card[data-section]');
+    const sections     = document.querySelectorAll('[id^="section-"]');
 
     const OTP_MAPS = {
       'introduction': [
         { href: '#what-is-quickforge', label: 'What is QuickForge' },
         { href: '#design-philosophy',  label: 'Design philosophy' },
-        { href: '#installation',       label: 'Installation' },
-        { href: '#quickstart',         label: 'Quickstart' },
-        { href: '#cli-flags',          label: 'CLI flags' },
-        { href: '#project-structure',  label: 'Project structure' },
+        { href: '#how-it-works',       label: 'How it works' },
+        { href: '#available-stacks',   label: 'Available stacks' },
+      ],
+      'installation': [
+        { href: '#system-requirements', label: 'System requirements' },
+        { href: '#using-npx',           label: 'Using npx' },
+        { href: '#global-install',      label: 'Global install' },
+        { href: '#verify-installation', label: 'Verify installation' },
+        { href: '#updating',            label: 'Updating' },
+      ],
+      'quickstart': [
+        { href: '#qs-step1',   label: 'Step 1 — Scaffold' },
+        { href: '#qs-step2',   label: 'Step 2 — Environment' },
+        { href: '#qs-step3',   label: 'Step 3 — Database' },
+        { href: '#qs-step4',   label: 'Step 4 — Run' },
+        { href: '#qs-scripts', label: 'Available scripts' },
+      ],
+      'project-structure': [
+        { href: '#ps-nextjs',  label: 'Next.js 15 layout' },
+        { href: '#ps-naming',  label: 'Naming conventions' },
+        { href: '#ps-paths',   label: 'Import paths' },
       ],
       'create': [
-        { href: '#syntax',   label: 'Syntax' },
-        { href: '#examples', label: 'Examples' },
+        { href: '#create-syntax',   label: 'Syntax' },
+        { href: '#create-flags',    label: 'Flags' },
+        { href: '#create-examples', label: 'Examples' },
+      ],
+      'add': [
+        { href: '#add-syntax',        label: 'Syntax' },
+        { href: '#add-integrations',  label: 'Available integrations' },
+        { href: '#add-examples',      label: 'Examples' },
+        { href: '#add-what-happens',  label: 'What add does' },
+      ],
+      'list': [
+        { href: '#list-syntax',  label: 'Syntax' },
+        { href: '#list-output',  label: 'Output' },
+        { href: '#list-flags',   label: 'Flags' },
+        { href: '#list-json',    label: 'JSON output' },
+      ],
+      'upgrade': [
+        { href: '#upgrade-cli',        label: 'Upgrade the CLI' },
+        { href: '#upgrade-sync',       label: 'Sync project files' },
+        { href: '#upgrade-flags',      label: 'Flags' },
+        { href: '#upgrade-what-syncs', label: 'What gets synced' },
+      ],
+      'nextjs-template': [
+        { href: '#nj-includes',  label: "What's included" },
+        { href: '#nj-scaffold',  label: 'Scaffold command' },
+        { href: '#nj-keyfiles',  label: 'Key files' },
+        { href: '#nj-scripts',   label: 'Available scripts' },
+        { href: '#nj-env',       label: 'Environment variables' },
+      ],
+      'react-template': [
+        { href: '#react-includes',   label: "What's included" },
+        { href: '#react-scaffold',   label: 'Scaffold command' },
+        { href: '#react-routing',    label: 'Routing' },
+        { href: '#react-api-client', label: 'API client' },
+        { href: '#react-keyfiles',   label: 'Key files' },
+        { href: '#react-env',        label: 'Environment variables' },
+      ],
+      'node-template': [
+        { href: '#node-includes',    label: "What's included" },
+        { href: '#node-scaffold',    label: 'Scaffold command' },
+        { href: '#node-router',      label: 'Router structure' },
+        { href: '#node-validation',  label: 'Request validation' },
+        { href: '#node-keyfiles',    label: 'Key files' },
+        { href: '#node-env',         label: 'Environment variables' },
+      ],
+      'svelte-template': [
+        { href: '#svelte-includes',  label: "What's included" },
+        { href: '#svelte-scaffold',  label: 'Scaffold command' },
+        { href: '#svelte-runes',     label: 'Svelte 5 runes' },
+        { href: '#svelte-actions',   label: 'Form actions' },
+        { href: '#svelte-keyfiles',  label: 'Key files' },
+        { href: '#svelte-env',       label: 'Environment variables' },
+      ],
+      'config-file': [
+        { href: '#cfg-create',     label: 'Creating the config' },
+        { href: '#cfg-example',    label: 'Full example' },
+        { href: '#cfg-options',    label: 'Config options' },
+        { href: '#cfg-precedence', label: 'Using config with CLI' },
+      ],
+      'env-vars': [
+        { href: '#env-how',          label: 'How it works' },
+        { href: '#env-server-vs-client', label: 'Server vs client' },
+        { href: '#env-adding',       label: 'Adding a new variable' },
+        { href: '#env-example-file', label: '.env.example' },
+        { href: '#env-cicd',         label: 'CI/CD secrets' },
+      ],
+      'plugins': [
+        { href: '#plugins-install',  label: 'Installing a plugin' },
+        { href: '#plugins-official', label: 'Official plugins' },
+        { href: '#plugins-writing',  label: 'Writing a plugin' },
+        { href: '#plugins-hooks',    label: 'Lifecycle hooks' },
+      ],
+      'vercel': [
+        { href: '#vercel-one-command', label: 'One-command deploy' },
+        { href: '#vercel-github',      label: 'Connecting GitHub' },
+        { href: '#vercel-json',        label: 'vercel.json' },
+        { href: '#vercel-db',          label: 'Database on Vercel' },
+        { href: '#vercel-actions',     label: 'GitHub Actions workflow' },
+      ],
+      'railway': [
+        { href: '#railway-cli',        label: 'Deploy via CLI' },
+        { href: '#railway-db',         label: 'Provision a database' },
+        { href: '#railway-env',        label: 'Environment variables' },
+        { href: '#railway-dockerfile', label: 'The Dockerfile' },
+        { href: '#railway-health',     label: 'Healthcheck' },
+      ],
+      'docker': [
+        { href: '#docker-file',           label: 'The Dockerfile' },
+        { href: '#docker-build-run',      label: 'Build and run' },
+        { href: '#docker-compose',        label: 'docker-compose' },
+        { href: '#docker-args',           label: 'Build args' },
+        { href: '#docker-multiplatform',  label: 'Multi-platform builds' },
       ],
     };
 
@@ -677,7 +2261,9 @@ npx quickforge create my-blog \
       const body = btn.closest('.code-block').querySelector('.code-body');
       navigator.clipboard.writeText(body.innerText).then(() => {
         btn.textContent = 'Copied';
-        setTimeout(() => { btn.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy'; }, 2000);
+        setTimeout(() => {
+          btn.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy';
+        }, 2000);
       });
     }
   </script>

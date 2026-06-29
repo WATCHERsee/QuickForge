@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuickForge — Production-Ready Web Scaffolding</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary:        #c0c1ff;
+      --primary-dim:    rgba(192,193,255,0.15);
+      --primary-border: rgba(192,193,255,0.28);
+      --secondary:      #ddb7ff;
+      --tertiary:       #4cd7f6;
+      --bg:             #0b1326;
+      --bg-dim:         #060e20;
+      --surface:        rgba(255,255,255,0.025);
+      --surface-mid:    rgba(255,255,255,0.05);
+      --surface-hi:     rgba(255,255,255,0.08);
+      --on-surface:     #dae2fd;
+      --on-dim:         #c7c4d7;
+      --outline:        rgba(255,255,255,0.08);
+      --outline-hard:   rgba(255,255,255,0.12);
+      --muted:          #908fa0;
+      --font:           'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --mono:           'JetBrains Mono', 'Cascadia Code', 'Fira Code', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--on-surface);
+      min-height: 100dvh;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* ── BACKGROUND ORBS ──────────────────────────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 1100px 800px at 8% 35%,  rgba(80,50,220,0.20)  0%, transparent 65%),
+        radial-gradient(ellipse  800px 700px at 94% 88%, rgba(130,30,200,0.14) 0%, transparent 65%),
+        radial-gradient(ellipse  500px 400px at 52% -2%, rgba(76,215,246,0.05) 0%, transparent 60%);
+    }
+
+    body > * { position: relative; z-index: 1; }
+
+    /* ── NAV ──────────────────────────────────────────────────────────────── */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      border-bottom: 1px solid var(--outline);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      background: rgba(11,19,38,0.72);
+    }
+
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--on-surface);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      flex-shrink: 0;
+    }
+
+    .logo-icon {
+      width: 24px;
+      height: 24px;
+      border: 1.5px solid rgba(192,193,255,0.5);
+      border-radius: 5px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5px;
+      padding: 4px;
+      flex-shrink: 0;
+    }
+
+    .logo-dot {
+      border-radius: 1.5px;
+      background: var(--primary);
+    }
+
+    .logo-dot:nth-child(2) { opacity: 0.55; }
+    .logo-dot:nth-child(3) { opacity: 0.55; }
+    .logo-dot:nth-child(4) { opacity: 0.25; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+
+    .nav-link {
+      font-size: 0.875rem;
+      font-weight: 450;
+      color: var(--on-dim);
+      text-decoration: none;
+      letter-spacing: 0.005em;
+      padding-bottom: 3px;
+      transition: color 0.18s ease;
+      position: relative;
+    }
+
+    .nav-link:hover { color: var(--on-surface); }
+
+    .nav-link.active {
+      color: var(--on-surface);
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0; right: 0;
+      height: 1.5px;
+      background: var(--primary);
+      border-radius: 1px;
+    }
+
+    .nav-cta {
+      margin-left: auto;
+      padding: 0.46875rem 1.125rem;
+      background: linear-gradient(135deg, #7c5ef5 0%, #5128e8 100%);
+      color: #fff;
+      font-family: var(--font);
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: -0.005em;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      transition: filter 0.18s, transform 0.15s;
+      flex-shrink: 0;
+      box-shadow: 0 0 20px rgba(100,70,240,0.25);
+    }
+
+    .nav-cta:hover  { filter: brightness(1.1); transform: translateY(-1px); }
+    .nav-cta:active { transform: translateY(0) scale(0.98); }
+
+    /* ── HERO ─────────────────────────────────────────────────────────────── */
+    .hero {
+      text-align: center;
+      padding: 5rem 2rem 3rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.06;
+      color: var(--on-surface);
+      margin-bottom: 1.1875rem;
+    }
+
+    .hero-sub {
+      font-size: 1.125rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--secondary);
+      opacity: 0.82;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ── FORGE CARD ───────────────────────────────────────────────────────── */
+    .card-wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
+    }
+
+    .forge-card {
+      background: rgba(255,255,255,0.022);
+      backdrop-filter: blur(40px);
+      -webkit-backdrop-filter: blur(40px);
+      border: 1px solid rgba(255,255,255,0.085);
+      border-radius: 1rem;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.07),
+        0 0 0 0.5px rgba(192,193,255,0.06),
+        0 32px 80px rgba(0,0,0,0.45);
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      overflow: hidden;
+    }
+
+    /* ── LEFT PANEL ───────────────────────────────────────────────────────── */
+    .left-panel {
+      padding: 1.625rem 1.75rem;
+      border-right: 1px solid rgba(255,255,255,0.07);
+      display: flex;
+      flex-direction: column;
+      gap: 1.125rem;
+    }
+
+    .panel-heading {
+      display: flex;
+      align-items: center;
+      gap: 0.5625rem;
+      font-size: 1.1875rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--on-surface);
+    }
+
+    .panel-heading svg {
+      color: var(--on-dim);
+      opacity: 0.7;
+    }
+
+    /* PROJECT NAME INPUT */
+    .input-wrap {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 0.5rem;
+      padding: 0.6875rem 0.9375rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .input-wrap:focus-within {
+      border-color: rgba(192,193,255,0.4);
+      box-shadow: 0 0 0 3px rgba(192,193,255,0.08);
+    }
+
+    .project-input {
+      font-family: var(--mono);
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--on-surface);
+      background: transparent;
+      border: none;
+      outline: none;
+      width: 100%;
+      caret-color: var(--primary);
+    }
+
+    /* SECTION LABEL */
+    .sect-label {
+      font-size: 0.625rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--on-dim);
+      opacity: 0.65;
+      margin-bottom: 0.5rem;
+    }
+
+    /* STACK GRID */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.4375rem;
+    }
+
+    .stack-card {
+      position: relative;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 0.5rem;
+      padding: 0.6875rem 0.75rem 0.625rem;
+      cursor: pointer;
+      transition: background 0.18s ease, border-color 0.18s ease, transform 0.15s ease;
+      user-select: none;
+    }
+
+    .stack-card:hover {
+      background: rgba(255,255,255,0.055);
+      border-color: rgba(255,255,255,0.13);
+      transform: translateY(-1px);
+    }
+
+    .stack-card:active { transform: scale(0.98); }
+
+    .stack-card.active {
+      background: rgba(192,193,255,0.07);
+      border-color: rgba(192,193,255,0.32);
+    }
+
+    .card-check {
+      position: absolute;
+      top: 0.4375rem;
+      right: 0.4375rem;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: #1a1aff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: scale(0.4);
+      transition: opacity 0.2s cubic-bezier(0.34,1.56,0.64,1),
+                  transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
+    }
+
+    .stack-card.active .card-check {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .card-icon {
+      color: var(--on-dim);
+      opacity: 0.75;
+      margin-bottom: 0.5rem;
+      transition: color 0.18s, opacity 0.18s;
+    }
+
+    .stack-card.active .card-icon {
+      color: var(--primary);
+      opacity: 1;
+    }
+
+    .card-label {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--on-surface);
+    }
+
+    /* FEATURES */
+    .features-list { display: flex; flex-direction: column; }
+
+    .feat-row {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      padding: 0.5rem 0.5rem;
+      border-radius: 0.375rem;
+      cursor: pointer;
+      transition: background 0.15s;
+      border-bottom: 1px solid rgba(255,255,255,0.046);
+    }
+
+    .feat-row:last-child { border-bottom: none; }
+    .feat-row:hover { background: rgba(255,255,255,0.03); }
+
+    .feat-cb {
+      width: 17px;
+      height: 17px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.18s, border-color 0.18s;
+    }
+
+    .feat-cb.checked {
+      background: #3d3fff;
+      border: 1.5px solid #3d3fff;
+    }
+
+    .feat-cb.unchecked {
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.16);
+    }
+
+    .feat-name {
+      flex: 1;
+      font-size: 0.875rem;
+      font-weight: 450;
+      color: var(--on-surface);
+    }
+
+    .native-badge {
+      font-size: 0.5625rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--on-dim);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 3px;
+      padding: 0.125rem 0.375rem;
+    }
+
+    /* ── RIGHT PANEL / TERMINAL ───────────────────────────────────────────── */
+    .right-panel {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .term-header {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      padding: 0.6875rem 0.9375rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      flex-shrink: 0;
+    }
+
+    .traffic-lights {
+      display: flex;
+      gap: 0.3125rem;
+      flex-shrink: 0;
+    }
+
+    .tl {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+    }
+
+    .tl-r { background: #ff6058; }
+    .tl-y { background: #febc2e; }
+    .tl-g { background: #28c840; }
+
+    .term-path-icon {
+      color: var(--muted);
+      opacity: 0.55;
+      flex-shrink: 0;
+    }
+
+    .term-path {
+      font-family: var(--mono);
+      font-size: 0.6875rem;
+      color: var(--muted);
+      opacity: 0.7;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .term-body {
+      flex: 1;
+      padding: 0.9375rem 1.0625rem;
+      font-family: var(--mono);
+      font-size: 0.78125rem;
+      line-height: 1.75;
+      background: rgba(0,0,0,0.18);
+      overflow: hidden;
+    }
+
+    .t-line {
+      display: flex;
+      align-items: baseline;
+      gap: 0.4375rem;
+      opacity: 0;
+      transform: translateY(5px);
+      animation: tline 0.28s ease forwards;
+    }
+
+    /* Staggered line animations — terminal "loads" progressively */
+    .t-line:nth-child(1) { animation-delay: 0.15s; }
+    .t-line:nth-child(2) { animation-delay: 0.70s; }
+    .t-line:nth-child(3) { animation-delay: 1.20s; }
+    .t-line:nth-child(4) { animation-delay: 1.70s; }
+    .t-line:nth-child(5) { animation-delay: 2.10s; }
+    .t-line:nth-child(6) { animation-delay: 2.42s; }
+    .t-line:nth-child(7) { animation-delay: 2.74s; }
+    .t-line:nth-child(8) { animation-delay: 3.25s; }
+    .t-line:nth-child(9) { animation-delay: 3.80s; }
+
+    @keyframes tline {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Terminal text colours */
+    .tc-arrow   { color: var(--on-dim); opacity: 0.75; }
+    .tc-cmd     { color: var(--on-surface); }
+    .tc-cyan    { color: var(--tertiary); font-style: italic; }
+    .tc-muted   { color: var(--on-dim); opacity: 0.65; }
+    .tc-bullet  { color: var(--muted); font-size: 0.6875rem; }
+    .tc-pkg     { color: var(--on-dim); opacity: 0.6; }
+    .tc-success { color: var(--tertiary); font-weight: 600; }
+    .tc-check   { color: var(--tertiary); }
+
+    .t-cursor {
+      display: inline-block;
+      width: 1.5px;
+      height: 0.85em;
+      background: var(--on-surface);
+      margin-left: 1px;
+      vertical-align: text-top;
+      opacity: 0;
+      animation: blink 1.05s step-end infinite 4.1s;
+    }
+
+    @keyframes blink {
+      0%,100% { opacity: 1; }
+      50%      { opacity: 0; }
+    }
+
+    /* FILE BADGES ROW */
+    .file-badges {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.4375rem;
+      padding: 0.6875rem 0.875rem;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      flex-shrink: 0;
+    }
+
+    .file-badge {
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 0.375rem;
+      padding: 0.4375rem 0.5625rem;
+      cursor: pointer;
+      transition: background 0.18s, border-color 0.18s;
+    }
+
+    .file-badge:hover {
+      background: rgba(255,255,255,0.065);
+      border-color: rgba(255,255,255,0.14);
+    }
+
+    .badge-type {
+      font-size: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.1875rem;
+    }
+
+    .badge-name {
+      font-family: var(--mono);
+      font-size: 0.625rem;
+      color: var(--on-dim);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ── STATUS BAR ───────────────────────────────────────────────────────── */
+    .status-bar {
+      display: flex;
+      justify-content: center;
+      padding: 2.25rem 2rem;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.625rem;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 9999px;
+      padding: 0.4375rem 1rem;
+      font-size: 0.8125rem;
+      color: var(--on-dim);
+      letter-spacing: 0.01em;
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--tertiary);
+      border-radius: 50%;
+      flex-shrink: 0;
+      animation: pulse-green 2.2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-green {
+      0%,100% { box-shadow: 0 0 0 0   rgba(76,215,246,0.5); opacity:1; }
+      50%      { box-shadow: 0 0 0 4px rgba(76,215,246,0);   opacity:0.8; }
+    }
+
+    .pill-divider {
+      width: 1px;
+      height: 11px;
+      background: rgba(255,255,255,0.14);
+    }
+
+    /* ── FOOTER ───────────────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 1.75rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .footer-brand { display: flex; flex-direction: column; gap: 0.1875rem; }
+
+    .footer-name {
+      font-size: 0.9375rem;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      color: var(--on-surface);
+    }
+
+    .footer-copy {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      opacity: 0.7;
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 1.5rem;
+      margin: 0 auto;
+    }
+
+    .footer-nav-link {
+      font-size: 0.875rem;
+      color: var(--on-dim);
+      opacity: 0.55;
+      text-decoration: none;
+      transition: opacity 0.18s;
+    }
+
+    .footer-nav-link:hover { opacity: 1; }
+
+    .footer-socials {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .social-icon {
+      width: 33px;
+      height: 33px;
+      background: rgba(255,255,255,0.045);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--on-dim);
+      text-decoration: none;
+      transition: background 0.18s, color 0.18s, transform 0.15s;
+    }
+
+    .social-icon:hover {
+      background: rgba(255,255,255,0.08);
+      color: var(--on-surface);
+      transform: translateY(-1px);
+    }
+
+    /* ── ENTRANCE ANIMATIONS ──────────────────────────────────────────────── */
+    .au { opacity:0; transform:translateY(18px); animation: au 0.65s cubic-bezier(0.16,1,0.3,1) forwards; }
+    .au-1 { animation-delay: 0.04s; }
+    .au-2 { animation-delay: 0.14s; }
+    .au-3 { animation-delay: 0.28s; }
+    .au-4 { animation-delay: 0.44s; }
+    .au-5 { animation-delay: 0.56s; }
+
+    @keyframes au {
+      to { opacity:1; transform:translateY(0); }
+    }
+
+    /* ── RESPONSIVE ───────────────────────────────────────────────────────── */
+    @media (max-width: 820px) {
+      .forge-card { grid-template-columns: 1fr; }
+      .left-panel { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+      .nav-links  { display: none; }
+      .hero       { padding: 3rem 1.25rem 2rem; }
+      .card-wrap  { padding: 0 1rem 3rem; }
+      .footer-nav { display: none; }
+      .footer-inner { justify-content: space-between; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ─────────────────────────────────────────────────────────────── -->
+  <nav class="navbar">
+    <div class="nav-inner">
+
+      <a href="#" class="nav-logo">
+        <div class="logo-icon">
+          <div class="logo-dot"></div>
+          <div class="logo-dot"></div>
+          <div class="logo-dot"></div>
+          <div class="logo-dot"></div>
+        </div>
+        QuickForge
+      </a>
+
+      <div class="nav-links">
+        <a href="#" class="nav-link">Features</a>
+        <a href="#" class="nav-link active">Documentation</a>
+        <a href="#" class="nav-link">Community</a>
+        <a href="#" class="nav-link">Changelog</a>
+      </div>
+
+      <a href="#" class="nav-cta">Try Demo</a>
+
+    </div>
+  </nav>
+
+  <!-- ── HERO ────────────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <h1 class="hero-title au au-1">QuickForge</h1>
+    <p class="hero-sub au au-2">
+      Generate production-ready webapps<br>
+      in seconds with our high-fidelity<br>
+      scaffolding engine.
+    </p>
+  </section>
+
+  <!-- ── FORGE CARD ──────────────────────────────────────────────────────── -->
+  <div class="card-wrap">
+    <div class="forge-card au au-3">
+
+      <!-- LEFT: PROJECT IDENTITY ─────────────────────────────────────────── -->
+      <div class="left-panel">
+
+        <!-- Heading -->
+        <div class="panel-heading">
+          <!-- Gear / settings icon -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.75"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/>
+          </svg>
+          Project Identity
+        </div>
+
+        <!-- Project name input -->
+        <div class="input-wrap">
+          <input
+            class="project-input"
+            id="project-input"
+            type="text"
+            value="my-awesome-project"
+            spellcheck="false"
+            autocomplete="off"
+          />
+        </div>
+
+        <!-- Core Stack -->
+        <div>
+          <div class="sect-label">Core Stack</div>
+          <div class="stack-grid" id="stack-grid">
+
+            <div class="stack-card active" data-stack="nextjs" data-template="next-js-v15">
+              <div class="card-check">
+                <!-- Check mark -->
+                <svg width="8" height="8" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 5 l2.5 2.5 4-4" stroke="#fff" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="card-icon">
+                <!-- Box/cube icon -->
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="1.75"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                  <line x1="12" x2="12" y1="22.08" y2="12"/>
+                </svg>
+              </div>
+              <div class="card-label">Next.js 15</div>
+            </div>
+
+            <div class="stack-card" data-stack="react" data-template="react-spa">
+              <div class="card-check">
+                <svg width="8" height="8" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 5 l2.5 2.5 4-4" stroke="#fff" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="card-icon">
+                <!-- Layers icon -->
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="1.75"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                  <polyline points="2 17 12 22 22 17"/>
+                  <polyline points="2 12 12 17 22 12"/>
+                </svg>
+              </div>
+              <div class="card-label">React SPA</div>
+            </div>
+
+            <div class="stack-card" data-stack="node" data-template="node-express">
+              <div class="card-check">
+                <svg width="8" height="8" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 5 l2.5 2.5 4-4" stroke="#fff" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="card-icon">
+                <!-- Server icon -->
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="1.75"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="8" x="2" y="2" rx="2"/>
+                  <rect width="20" height="8" x="2" y="14" rx="2"/>
+                  <line x1="6" x2="6.01" y1="6" y2="6"/>
+                  <line x1="6" x2="6.01" y1="18" y2="18"/>
+                </svg>
+              </div>
+              <div class="card-label">Node.js API</div>
+            </div>
+
+            <div class="stack-card" data-stack="svelte" data-template="sveltekit">
+              <div class="card-check">
+                <svg width="8" height="8" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 5 l2.5 2.5 4-4" stroke="#fff" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="card-icon">
+                <!-- Lightning bolt icon -->
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="1.75"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/>
+                </svg>
+              </div>
+              <div class="card-label">SvelteKit</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Features -->
+        <div>
+          <div class="sect-label">Features</div>
+          <div class="features-list" id="features-list">
+
+            <div class="feat-row" onclick="toggleFeat(this)">
+              <div class="feat-cb checked">
+                <svg width="9" height="9" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 5 l2.5 2.5 4-4" stroke="#fff" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <span class="feat-name">Tailwind CSS v4</span>
+              <span class="native-badge">Native</span>
+            </div>
+
+            <div class="feat-row" onclick="toggleFeat(this)">
+              <div class="feat-cb checked">
+                <svg width="9" height="9" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 5 l2.5 2.5 4-4" stroke="#fff" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <span class="feat-name">Auth.js v5</span>
+            </div>
+
+            <div class="feat-row" onclick="toggleFeat(this)">
+              <div class="feat-cb checked">
+                <svg width="9" height="9" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 5 l2.5 2.5 4-4" stroke="#fff" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <span class="feat-name">Prisma DB Connect</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div><!-- /left-panel -->
+
+      <!-- RIGHT: TERMINAL ────────────────────────────────────────────────── -->
+      <div class="right-panel">
+
+        <!-- Terminal header bar -->
+        <div class="term-header">
+          <div class="traffic-lights">
+            <div class="tl tl-r"></div>
+            <div class="tl tl-y"></div>
+            <div class="tl tl-g"></div>
+          </div>
+          <!-- Lock icon for path -->
+          <svg class="term-path-icon" width="11" height="11" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+          <span class="term-path" id="term-path">~/quickforge/my-awesome-project</span>
+        </div>
+
+        <!-- Terminal body -->
+        <div class="term-body" id="term-body">
+
+          <div class="t-line">
+            <span class="tc-arrow">→</span>
+            <span class="tc-cmd">npx quickforge create <span id="tn-create">my-awesome-project</span></span>
+          </div>
+
+          <div class="t-line">
+            <span class="tc-cyan">... initializing forge engine</span>
+          </div>
+
+          <div class="t-line">
+            <span class="tc-arrow" style="opacity:0.45">...</span>
+            <span class="tc-muted">pulling template: <span id="tn-template">next-js-v15</span></span>
+          </div>
+
+          <div class="t-line">
+            <span class="tc-arrow" style="opacity:0.45">...</span>
+            <span class="tc-muted">installing dependencies via bun</span>
+          </div>
+
+          <div class="t-line">
+            <span class="tc-bullet">◎</span>
+            <span class="tc-pkg">tailwindcss@4.0.0-alpha.1</span>
+          </div>
+
+          <div class="t-line">
+            <span class="tc-bullet">◎</span>
+            <span class="tc-pkg">auth/core@0.34.2</span>
+          </div>
+
+          <div class="t-line">
+            <span class="tc-bullet">◎</span>
+            <span class="tc-pkg">prisma@5.18.0</span>
+          </div>
+
+          <div class="t-line">
+            <span class="tc-check">✓</span>
+            <span class="tc-success">Project scaffolded successfully in 1.4s</span>
+          </div>
+
+          <div class="t-line">
+            <span class="tc-arrow">→</span>
+            <span class="tc-cmd">cd <span id="tn-cd">my-awesome-project</span> &amp;&amp; bun run dev</span>
+            <span class="t-cursor"></span>
+          </div>
+
+        </div>
+
+        <!-- File badges -->
+        <div class="file-badges">
+
+          <div class="file-badge">
+            <div class="badge-type" style="color: var(--primary)">SRC</div>
+            <div class="badge-name">/app/page.tsx</div>
+          </div>
+
+          <div class="file-badge">
+            <div class="badge-type" style="color: var(--secondary)">DB</div>
+            <div class="badge-name">schema.prisma</div>
+          </div>
+
+          <div class="file-badge">
+            <div class="badge-type" style="color: var(--tertiary)">STYLING</div>
+            <div class="badge-name">globals.css</div>
+          </div>
+
+        </div>
+
+      </div><!-- /right-panel -->
+
+    </div><!-- /forge-card -->
+  </div><!-- /card-wrap -->
+
+  <!-- ── STATUS BAR ──────────────────────────────────────────────────────── -->
+  <div class="status-bar">
+    <div class="status-pill au au-4">
+      <span class="pill-dot"></span>
+      <span>v2.4.0 Engine Ready</span>
+      <span class="pill-divider"></span>
+      <span>4.2k Active Projects</span>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ───────────────────────────────────────────────────────────── -->
+  <footer class="au au-5">
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+        <span class="footer-name">QuickForge</span>
+        <span class="footer-copy">© 2024 QuickForge Engine</span>
+      </div>
+
+      <nav class="footer-nav">
+        <a href="#" class="footer-nav-link">Documentation</a>
+        <a href="#" class="footer-nav-link">Changelog</a>
+        <a href="#" class="footer-nav-link">Community</a>
+        <a href="#" class="footer-nav-link">Status</a>
+      </nav>
+
+      <div class="footer-socials">
+
+        <!-- GitHub -->
+        <a href="#" class="social-icon" aria-label="GitHub">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2Z"/>
+          </svg>
+        </a>
+
+        <!-- X / Twitter -->
+        <a href="#" class="social-icon" aria-label="X / Twitter">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ── STACK CARD SELECTION ─────────────────────────────────────────────── */
+    const stackCards = document.querySelectorAll('.stack-card');
+    const tnTemplate = document.getElementById('tn-template');
+
+    stackCards.forEach(card => {
+      card.addEventListener('click', () => {
+        stackCards.forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        if (tnTemplate) tnTemplate.textContent = card.dataset.template;
+      });
+    });
+
+    /* ── FEATURE CHECKBOX TOGGLE ──────────────────────────────────────────── */
+    function toggleFeat(row) {
+      const cb = row.querySelector('.feat-cb');
+      const checkSvg = cb.querySelector('svg');
+
+      if (cb.classList.contains('checked')) {
+        cb.classList.replace('checked', 'unchecked');
+        if (checkSvg) checkSvg.style.display = 'none';
+      } else {
+        cb.classList.replace('unchecked', 'checked');
+        if (checkSvg) checkSvg.style.display = '';
+      }
+    }
+
+    /* ── LIVE PROJECT NAME SYNC ───────────────────────────────────────────── */
+    const projectInput = document.getElementById('project-input');
+    const tnCreate     = document.getElementById('tn-create');
+    const tnCd         = document.getElementById('tn-cd');
+    const termPath     = document.getElementById('term-path');
+
+    projectInput.addEventListener('input', () => {
+      const val = projectInput.value.trim() || 'my-project';
+      const slug = val.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+      const display = slug || 'my-project';
+
+      if (tnCreate)  tnCreate.textContent  = display;
+      if (tnCd)      tnCd.textContent      = display;
+      if (termPath)  termPath.textContent  = `~/quickforge/${display}`;
+    });
+
+    /* ── TERMINAL REPLAY ON CARD CLICK ───────────────────────────────────── */
+    stackCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const lines = document.querySelectorAll('.t-line');
+        lines.forEach((line, i) => {
+          line.style.animation = 'none';
+          line.style.opacity   = '0';
+          line.style.transform = 'translateY(5px)';
+          void line.offsetWidth; /* reflow */
+          const delays = [0.1, 0.65, 1.1, 1.6, 2.0, 2.3, 2.6, 3.1, 3.65];
+          line.style.animation = `tline 0.28s ease ${delays[i] || i * 0.3}s forwards`;
+        });
+
+        const cursor = document.querySelector('.t-cursor');
+        if (cursor) {
+          cursor.style.animation = 'none';
+          void cursor.offsetWidth;
+          cursor.style.animation = 'blink 1.05s step-end infinite 4.05s';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

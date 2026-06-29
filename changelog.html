@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Changelog — QuickForge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary:        #c0c1ff;
+      --primary-dim:    rgba(192,193,255,0.15);
+      --primary-border: rgba(192,193,255,0.28);
+      --secondary:      #ddb7ff;
+      --tertiary:       #4cd7f6;
+      --bg:             #0b1326;
+      --bg-dim:         #060e20;
+      --surface:        rgba(255,255,255,0.025);
+      --surface-mid:    rgba(255,255,255,0.05);
+      --surface-hi:     rgba(255,255,255,0.08);
+      --on-surface:     #dae2fd;
+      --on-dim:         #c7c4d7;
+      --outline:        rgba(255,255,255,0.08);
+      --outline-hard:   rgba(255,255,255,0.12);
+      --muted:          #908fa0;
+      --font:           'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --mono:           'JetBrains Mono', 'Cascadia Code', 'Fira Code', monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font); background: var(--bg); color: var(--on-surface);
+      min-height: 100dvh; -webkit-font-smoothing: antialiased; overflow-x: hidden; position: relative;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(ellipse 1100px 800px at 8% 35%,  rgba(80,50,220,0.20)  0%, transparent 65%),
+        radial-gradient(ellipse  800px 700px at 94% 88%, rgba(130,30,200,0.14) 0%, transparent 65%),
+        radial-gradient(ellipse  500px 400px at 52% -2%, rgba(76,215,246,0.05) 0%, transparent 60%);
+    }
+    body > * { position: relative; z-index: 1; }
+
+    /* NAV */
+    .navbar { position: sticky; top: 0; z-index: 200; border-bottom: 1px solid var(--outline); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); background: rgba(11,19,38,0.72); }
+    .nav-inner { max-width: 1080px; margin: 0 auto; padding: 0 2rem; height: 54px; display: flex; align-items: center; gap: 2.5rem; }
+    .nav-logo { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9375rem; font-weight: 700; color: var(--on-surface); text-decoration: none; letter-spacing: -0.01em; flex-shrink: 0; }
+    .logo-icon { width: 24px; height: 24px; border: 1.5px solid rgba(192,193,255,0.5); border-radius: 5px; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5px; padding: 4px; flex-shrink: 0; }
+    .logo-dot { border-radius: 1.5px; background: var(--primary); }
+    .logo-dot:nth-child(2) { opacity: 0.55; } .logo-dot:nth-child(3) { opacity: 0.55; } .logo-dot:nth-child(4) { opacity: 0.25; }
+    .nav-links { display: flex; align-items: center; gap: 1.75rem; }
+    .nav-link { font-size: 0.875rem; font-weight: 450; color: var(--on-dim); text-decoration: none; letter-spacing: 0.005em; padding-bottom: 3px; transition: color 0.18s ease; position: relative; }
+    .nav-link:hover { color: var(--on-surface); }
+    .nav-link.active { color: var(--on-surface); }
+    .nav-link.active::after { content: ''; position: absolute; bottom: -3px; left: 0; right: 0; height: 1.5px; background: var(--primary); border-radius: 1px; }
+    .nav-cta { margin-left: auto; padding: 0.46875rem 1.125rem; background: linear-gradient(135deg, #7c5ef5 0%, #5128e8 100%); color: #fff; font-family: var(--font); font-size: 0.875rem; font-weight: 600; letter-spacing: -0.005em; border-radius: 8px; border: none; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; transition: filter 0.18s, transform 0.15s; flex-shrink: 0; box-shadow: 0 0 20px rgba(100,70,240,0.25); }
+    .nav-cta:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
+    /* LAYOUT */
+    .page-layout { display: grid; grid-template-columns: 220px 1fr; gap: 0; max-width: 1080px; margin: 0 auto; padding: 0 2rem; min-height: calc(100dvh - 54px - 80px); }
+
+    /* HERO */
+    .hero { padding: 4.5rem 2rem 3rem; text-align: center; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tertiary); opacity: 0.85; background: rgba(76,215,246,0.1); border: 1px solid rgba(76,215,246,0.22); border-radius: 9999px; padding: 0.3125rem 0.875rem; margin-bottom: 1.5rem; }
+    .hero-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.06; color: var(--on-surface); margin-bottom: 1rem; }
+    .hero-sub { font-size: 1rem; color: var(--on-dim); line-height: 1.65; max-width: 440px; margin: 0 auto; }
+
+    /* SIDEBAR */
+    .cl-sidebar {
+      padding: 2rem 1.5rem 2rem 0;
+      border-right: 1px solid var(--outline);
+      position: sticky; top: 54px;
+      height: calc(100dvh - 54px);
+      overflow-y: auto; flex-shrink: 0;
+    }
+    .sidebar-label { font-size: 0.625rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); opacity: 0.7; margin-bottom: 0.75rem; }
+    .sidebar-list { display: flex; flex-direction: column; gap: 0.125rem; }
+    .sidebar-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.4375rem 0.625rem; border-radius: 6px;
+      font-size: 0.8125rem; color: var(--on-dim);
+      text-decoration: none; transition: background 0.15s, color 0.15s;
+    }
+    .sidebar-item:hover { background: var(--surface-mid); color: var(--on-surface); }
+    .sidebar-item.current { background: var(--primary-dim); color: var(--primary); }
+    .sidebar-ver { font-family: var(--mono); font-size: 0.8125rem; }
+    .latest-badge { font-size: 0.5rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: rgba(76,215,246,0.12); border: 1px solid rgba(76,215,246,0.25); color: var(--tertiary); border-radius: 3px; padding: 0.125rem 0.375rem; }
+
+    /* CONTENT */
+    .cl-content { padding: 2rem 0 4rem 2.5rem; }
+
+    /* RELEASE ENTRY */
+    .release {
+      margin-bottom: 4rem; padding-bottom: 4rem;
+      border-bottom: 1px solid var(--outline);
+    }
+    .release:last-child { border-bottom: none; margin-bottom: 0; }
+
+    .release-header { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
+    .release-ver-wrap { flex-shrink: 0; }
+    .release-ver {
+      font-family: var(--mono); font-size: 1.5rem; font-weight: 700;
+      letter-spacing: -0.02em; color: var(--on-surface);
+      display: flex; align-items: center; gap: 0.625rem;
+    }
+    .release-date { font-size: 0.8125rem; color: var(--muted); margin-top: 0.1875rem; }
+    .release-title { font-size: 1.0625rem; font-weight: 600; letter-spacing: -0.015em; color: var(--on-dim); padding-top: 0.25rem; }
+
+    /* CHANGE TYPE GROUPS */
+    .change-group { margin-bottom: 1.25rem; }
+    .change-type {
+      font-size: 0.625rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 0.625rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .ct-added   { color: var(--tertiary); }
+    .ct-changed { color: var(--primary); }
+    .ct-fixed   { color: var(--secondary); }
+    .ct-removed { color: #ff8080; }
+
+    .change-list { display: flex; flex-direction: column; gap: 0.375rem; }
+    .change-item { display: flex; align-items: flex-start; gap: 0.625rem; }
+    .change-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; margin-top: 0.45em; }
+    .dot-added   { background: var(--tertiary); }
+    .dot-changed { background: var(--primary); }
+    .dot-fixed   { background: var(--secondary); }
+    .dot-removed { background: #ff8080; }
+    .change-text { font-size: 0.875rem; color: var(--on-dim); line-height: 1.6; }
+    .change-text code { font-family: var(--mono); font-size: 0.8em; color: var(--primary); background: var(--primary-dim); border: 1px solid var(--primary-border); border-radius: 3px; padding: 0.1em 0.4em; }
+
+    /* DIFF SNIPPET */
+    .diff-block {
+      background: rgba(0,0,0,0.3); border: 1px solid var(--outline);
+      border-radius: 8px; overflow: hidden; margin-top: 1.25rem;
+    }
+    .diff-bar { padding: 0.5rem 0.875rem; border-bottom: 1px solid var(--outline); background: rgba(255,255,255,0.02); font-family: var(--mono); font-size: 0.6875rem; color: var(--muted); }
+    .diff-body { padding: 0.875rem 1rem; font-family: var(--mono); font-size: 0.75rem; line-height: 1.75; }
+    .diff-add  { color: #5ef5a0; }
+    .diff-rem  { color: #ff8080; }
+    .diff-ctx  { color: var(--muted); }
+
+    /* FOOTER */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 1.75rem 2rem; }
+    .footer-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; gap: 2rem; }
+    .footer-brand { display: flex; flex-direction: column; gap: 0.1875rem; }
+    .footer-name { font-size: 0.9375rem; font-weight: 700; letter-spacing: -0.015em; color: var(--on-surface); }
+    .footer-copy { font-size: 0.8125rem; color: var(--muted); opacity: 0.7; }
+    .footer-nav { display: flex; gap: 1.5rem; margin: 0 auto; }
+    .footer-nav-link { font-size: 0.875rem; color: var(--on-dim); opacity: 0.55; text-decoration: none; transition: opacity 0.18s; }
+    .footer-nav-link:hover { opacity: 1; }
+    .footer-socials { display: flex; gap: 0.5rem; }
+    .social-icon { width: 33px; height: 33px; background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.09); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--on-dim); text-decoration: none; transition: background 0.18s, color 0.18s, transform 0.15s; }
+    .social-icon:hover { background: rgba(255,255,255,0.08); color: var(--on-surface); transform: translateY(-1px); }
+
+    /* ANIMATIONS */
+    .au { opacity:0; transform:translateY(18px); animation: au 0.65s cubic-bezier(0.16,1,0.3,1) forwards; }
+    .au-1{animation-delay:0.04s} .au-2{animation-delay:0.14s} .au-3{animation-delay:0.24s}
+    @keyframes au { to { opacity:1; transform:translateY(0); } }
+
+    /* RESPONSIVE */
+    @media (max-width: 820px) {
+      .nav-links { display: none; }
+      .page-layout { grid-template-columns: 1fr; }
+      .cl-sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--outline); padding: 1.5rem 0; }
+      .cl-content { padding: 2rem 0; }
+      .footer-nav { display: none; }
+      .footer-inner { justify-content: space-between; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="dashboard.html" class="nav-logo">
+        <div class="logo-icon">
+          <div class="logo-dot"></div><div class="logo-dot"></div>
+          <div class="logo-dot"></div><div class="logo-dot"></div>
+        </div>
+        QuickForge
+      </a>
+      <div class="nav-links">
+        <a href="features.html"       class="nav-link">Features</a>
+        <a href="documentation.html"  class="nav-link">Documentation</a>
+        <a href="community.html"      class="nav-link">Community</a>
+        <a href="changelog.html"      class="nav-link active">Changelog</a>
+      </div>
+      <a href="dashboard.html" class="nav-cta">Try Demo</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-eyebrow au au-1">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      Release history
+    </div>
+    <h1 class="hero-title au au-2">Changelog</h1>
+    <p class="hero-sub au au-3">Every change to the QuickForge engine, CLI, and templates — tracked from v1.0 to the present.</p>
+  </section>
+
+  <div class="page-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="cl-sidebar">
+      <div class="sidebar-label">Versions</div>
+      <div class="sidebar-list">
+        <a href="#v2-4-0" class="sidebar-item current">
+          <span class="sidebar-ver">v2.4.0</span>
+          <span class="latest-badge">Latest</span>
+        </a>
+        <a href="#v2-3-0" class="sidebar-item"><span class="sidebar-ver">v2.3.0</span></a>
+        <a href="#v2-2-1" class="sidebar-item"><span class="sidebar-ver">v2.2.1</span></a>
+        <a href="#v2-2-0" class="sidebar-item"><span class="sidebar-ver">v2.2.0</span></a>
+        <a href="#v2-1-0" class="sidebar-item"><span class="sidebar-ver">v2.1.0</span></a>
+        <a href="#v2-0-0" class="sidebar-item"><span class="sidebar-ver">v2.0.0</span></a>
+        <a href="#v1-9-2" class="sidebar-item"><span class="sidebar-ver">v1.9.2</span></a>
+        <a href="#v1-8-0" class="sidebar-item"><span class="sidebar-ver">v1.8.0</span></a>
+      </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="cl-content">
+
+      <!-- v2.4.0 -->
+      <div class="release" id="v2-4-0">
+        <div class="release-header">
+          <div class="release-ver-wrap">
+            <div class="release-ver">
+              v2.4.0
+              <span class="latest-badge">Latest</span>
+            </div>
+            <div class="release-date">June 27, 2024</div>
+          </div>
+          <div class="release-title">Svelte 5 runes, Drizzle ORM integration, Hono v4 upgrade</div>
+        </div>
+
+        <div class="change-group">
+          <div class="change-type ct-added">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+            Added
+          </div>
+          <div class="change-list">
+            <div class="change-item">
+              <div class="change-dot dot-added"></div>
+              <div class="change-text">Svelte 5 runes mode enabled by default in the <code>sveltekit</code> template — <code>$state</code>, <code>$derived</code>, and <code>$effect</code> used throughout the starter.</div>
+            </div>
+            <div class="change-item">
+              <div class="change-dot dot-added"></div>
+              <div class="change-text">Drizzle ORM integration as an alternative to Prisma — pass <code>--orm drizzle</code> to the CLI to use the new Drizzle template with migration tooling included.</div>
+            </div>
+            <div class="change-item">
+              <div class="change-dot dot-added"></div>
+              <div class="change-text">New <code>--features</code> flag accepting a comma-separated list: <code>--features auth,db,stripe,email</code> for single-command full-stack setup.</div>
+            </div>
+            <div class="change-item">
+              <div class="change-dot dot-added"></div>
+              <div class="change-text">OpenTelemetry tracing scaffold added to the Node.js API template. Exports to OTLP-compatible endpoints out of the box.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="change-group">
+          <div class="change-type ct-changed">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/></svg>
+            Changed
+          </div>
+          <div class="change-list">
+            <div class="change-item">
+              <div class="change-dot dot-changed"></div>
+              <div class="change-text">Hono upgraded from v3.12 to v4.0 in the Node.js API template. Route definitions updated to use the new <code>Hono</code> class constructor pattern.</div>
+            </div>
+            <div class="change-item">
+              <div class="change-dot dot-changed"></div>
+              <div class="change-text">Tailwind CSS configuration now uses the v4 CSS-first model — <code>tailwind.config.ts</code> no longer generated; all customisation lives in <code>globals.css</code>.</div>
+            </div>
+            <div class="change-item">
+              <div class="change-dot dot-changed"></div>
+              <div class="change-text">Bun dependency resolution updated to use <code>bun install --frozen-lockfile</code> in CI workflows to prevent accidental version drift.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="change-group">
+          <div class="change-type ct-fixed">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m14.7 6.3-1 1"/><path d="M21 21 9 9"/><path d="m3 3 .343.343"/><path d="m7 13-1 1"/><path d="M9 3H5a2 2 0 0 0-2 2v4m0 8v4a2 2 0 0 0 2 2h4"/><path d="m3 21 .343-.343"/><path d="M15 9h5l-5 5V9"/></svg>
+            Fixed
+          </div>
+          <div class="change-list">
+            <div class="change-item">
+              <div class="change-dot dot-fixed"></div>
+              <div class="change-text">Auth.js session cookie <code>sameSite</code> attribute defaulting to <code>lax</code> instead of <code>strict</code> in the Next.js template middleware.</div>
+            </div>
+            <div class="change-item">
+              <div class="change-dot dot-fixed"></div>
+              <div class="change-text">Path alias <code>@/</code> not resolving correctly in Vite projects when output directory was set to a non-default value.</div>
+            </div>
+            <div class="change-item">
+              <div class="change-dot dot-fixed"></div>
+              <div class="change-text">Docker multi-stage build failing on Alpine base images when <code>node-gyp</code> dependencies were present in the lockfile.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="diff-block">
+          <div class="diff-bar">vercel.json — new rewrite rules for parallel routes</div>
+          <div class="diff-body">
+            <span class="diff-ctx"> {</span><br>
+            <span class="diff-rem">-  "rewrites": [{ "source": "/", "destination": "/dashboard.html" }]</span><br>
+            <span class="diff-add">+  "buildCommand": null,</span><br>
+            <span class="diff-add">+  "outputDirectory": ".",</span><br>
+            <span class="diff-add">+  "framework": null,</span><br>
+            <span class="diff-add">+  "rewrites": [{ "source": "/", "destination": "/dashboard.html" }]</span><br>
+            <span class="diff-ctx"> }</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- v2.3.0 -->
+      <div class="release" id="v2-3-0">
+        <div class="release-header">
+          <div class="release-ver-wrap">
+            <div class="release-ver">v2.3.0</div>
+            <div class="release-date">May 14, 2024</div>
+          </div>
+          <div class="release-title">TanStack Router, React 19 RC support, performance improvements</div>
+        </div>
+
+        <div class="change-group">
+          <div class="change-type ct-added">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+            Added
+          </div>
+          <div class="change-list">
+            <div class="change-item">
+              <div class="change-dot dot-added"></div>
+              <div class="change-text">TanStack Router v1 added as an option for the React SPA template, replacing the previous React Router v6 default. Pass <code>--router tanstack</code> or <code>--router react-router</code>.</div>
+            </div>
+            <div class="change-item">
+              <div class="change-dot dot-added"></div>
+              <div class="change-text">React 19 RC support across all React-based templates. Concurrent features enabled by default with <code>createRoot</code>.</div>
+            </div>
+            <div class="change-item">
+              <div class="change-dot dot-added"></div>
+              <div class="change-text">Storybook 8 pre-configured in the React SPA template with Chromatic CI integration and auto-generated stories for all scaffold components.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="change-group">
+          <div class="change-type ct-fixed">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Fixed
+          </div>
+          <div class="change-list">
+            <div class="change-item">
+              <div class="change-dot dot-fixed"></div>
+              <div class="change-text">Scaffold time regression introduced in v2.2.0 — parallel template download restored, bringing average time back below 1.5 seconds.</div>
+            </div>
+            <div class="change-item">
+              <div class="change-dot dot-fixed"></div>
+              <div class="change-text"><code>quickforge list</code> command not displaying template descriptions when run in a CI environment with no TTY.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- v2.2.1 -->
+      <div class="release" id="v2-2-1">
+        <div class="release-header">
+          <div class="release-ver-wrap">
+            <div class="release-ver">v2.2.1</div>
+            <div class="release-date">April 30, 2024</div>
+          </div>
+          <div class="release-title">Patch — Auth.js session bug and ESLint flat config fix</div>
+        </div>
+
+        <div class="change-group">
+          <div class="change-type ct-fixed">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Fixed
+          </div>
+          <div class="change-list">
+            <div class="change-item">
+              <div class="change-dot dot-fixed"></div>
+              <div class="change-text">Auth.js v5 session token not persisting across hard refresh when <code>trustHost: true</code> was not set in the auth config — added automatically for all environments.</div>
+            </div>
+            <div class="change-item">
+              <div class="change-dot dot-fixed"></div>
+              <div class="change-text">ESLint flat config (<code>eslint.config.mjs</code>) failing on Node.js 18 due to missing <code>--experimental-vm-modules</code> flag in the lint script.</div>
+            </div>
+            <div class="change-item">
+              <div class="change-dot dot-fixed"></div>
+              <div class="change-text">Prisma schema not found error when scaffold was run from a directory path containing spaces on Windows.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- v2.2.0 -->
+      <div class="release" id="v2-2-0">
+        <div class="release-header">
+          <div class="release-ver-wrap">
+            <div class="release-ver">v2.2.0</div>
+            <div class="release-date">April 8, 2024</div>
+          </div>
+          <div class="release-title">Monorepo support, Turborepo pipeline, multi-app scaffold</div>
+        </div>
+
+        <div class="change-group">
+          <div class="change-type ct-added">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+            Added
+          </div>
+          <div class="change-list">
+            <div class="change-item">
+              <div class="change-dot dot-added"></div>
+              <div class="change-text">Monorepo mode: <code>quickforge create --monorepo</code> scaffolds a Turborepo workspace with a Next.js web app and a shared packages directory pre-configured.</div>
+            </div>
+            <div class="change-item">
+              <div class="change-dot dot-added"></div>
+              <div class="change-text"><code>quickforge add</code> command for adding a new app or package to an existing QuickForge monorepo without re-scaffolding.</div>
+            </div>
+            <div class="change-item">
+              <div class="change-dot dot-added"></div>
+              <div class="change-text">Shared <code>@repo/ui</code> and <code>@repo/config</code> packages generated with sensible defaults — Tailwind config, TypeScript config, and ESLint config all shared.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="change-group">
+          <div class="change-type ct-changed">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/></svg>
+            Changed
+          </div>
+          <div class="change-list">
+            <div class="change-item">
+              <div class="change-dot dot-changed"></div>
+              <div class="change-text">Default package manager switched from npm to Bun across all templates. npm and pnpm still supported via <code>--pm npm</code> and <code>--pm pnpm</code>.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- v2.1.0 -->
+      <div class="release" id="v2-1-0">
+        <div class="release-header">
+          <div class="release-ver-wrap">
+            <div class="release-ver">v2.1.0</div>
+            <div class="release-date">March 5, 2024</div>
+          </div>
+          <div class="release-title">Docker output, GitHub Actions CI, Resend email integration</div>
+        </div>
+
+        <div class="change-group">
+          <div class="change-type ct-added">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+            Added
+          </div>
+          <div class="change-list">
+            <div class="change-item">
+              <div class="change-dot dot-added"></div>
+              <div class="change-text">Multi-stage Dockerfile generated for all templates — Node.js 22 Alpine base, non-root user, and <code>.dockerignore</code> excluding dev dependencies and local builds.</div>
+            </div>
+            <div class="change-item">
+              <div class="change-dot dot-added"></div>
+              <div class="change-text">GitHub Actions workflow file for test, build, and deploy-to-Vercel on pull request merge, including environment-scoped secrets injection.</div>
+            </div>
+            <div class="change-item">
+              <div class="change-dot dot-added"></div>
+              <div class="change-text">Resend email integration: pass <code>--features email</code> to include a pre-built transactional email module using Resend with React Email templates.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- v2.0.0 -->
+      <div class="release" id="v2-0-0">
+        <div class="release-header">
+          <div class="release-ver-wrap">
+            <div class="release-ver">v2.0.0</div>
+            <div class="release-date">February 1, 2024</div>
+          </div>
+          <div class="release-title">Complete rewrite — plugin architecture, template registry, CLI v2</div>
+        </div>
+
+        <div class="change-group">
+          <div class="change-type ct-added">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+            Added
+          </div>
+          <div class="change-list">
+            <div class="change-item">
+              <div class="change-dot dot-added"></div>
+              <div class="change-text">Plugin architecture: publish a QuickForge plugin to npm with the <code>quickforge-plugin-*</code> namespace and it becomes available via <code>--plugins</code> at scaffold time.</div>
+            </div>
+            <div class="change-item">
+              <div class="change-dot dot-added"></div>
+              <div class="change-text">Remote template registry at <code>registry.quickforge.dev</code> — community templates fetched at runtime, no local caching of stale templates.</div>
+            </div>
+            <div class="change-item">
+              <div class="change-dot dot-added"></div>
+              <div class="change-text">Interactive CLI mode: running <code>npx quickforge</code> without arguments launches the step-by-step scaffold wizard.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="change-group">
+          <div class="change-type ct-removed">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ff8080" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg>
+            Removed
+          </div>
+          <div class="change-list">
+            <div class="change-item">
+              <div class="change-dot dot-removed"></div>
+              <div class="change-text">v1 config file format (<code>.quickforgerc</code>) removed. Migrate to <code>quickforge.config.ts</code> using the migration guide.</div>
+            </div>
+            <div class="change-item">
+              <div class="change-dot dot-removed"></div>
+              <div class="change-text">Legacy <code>--template</code> flag removed in favour of <code>--stack</code>. The old flag prints a migration hint and exits.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-name">QuickForge</span>
+        <span class="footer-copy">© 2024 QuickForge Engine</span>
+      </div>
+      <nav class="footer-nav">
+        <a href="documentation.html" class="footer-nav-link">Documentation</a>
+        <a href="changelog.html"     class="footer-nav-link">Changelog</a>
+        <a href="community.html"     class="footer-nav-link">Community</a>
+      </nav>
+      <div class="footer-socials">
+        <a href="#" class="social-icon" aria-label="GitHub">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2Z"/></svg>
+        </a>
+        <a href="#" class="social-icon" aria-label="X">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const items = document.querySelectorAll('.sidebar-item');
+    const releases = document.querySelectorAll('.release');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          items.forEach(i => i.classList.remove('current'));
+          const target = document.querySelector('.sidebar-item[href="#' + entry.target.id + '"]');
+          if (target) target.classList.add('current');
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    releases.forEach(r => observer.observe(r));
+  </script>
+
+</body>
+</html>

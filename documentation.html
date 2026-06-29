@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentation — QuickForge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary:        #c0c1ff;
+      --primary-dim:    rgba(192,193,255,0.15);
+      --primary-border: rgba(192,193,255,0.28);
+      --secondary:      #ddb7ff;
+      --tertiary:       #4cd7f6;
+      --bg:             #0b1326;
+      --bg-dim:         #060e20;
+      --surface:        rgba(255,255,255,0.025);
+      --surface-mid:    rgba(255,255,255,0.05);
+      --surface-hi:     rgba(255,255,255,0.08);
+      --on-surface:     #dae2fd;
+      --on-dim:         #c7c4d7;
+      --outline:        rgba(255,255,255,0.08);
+      --outline-hard:   rgba(255,255,255,0.12);
+      --muted:          #908fa0;
+      --font:           'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --mono:           'JetBrains Mono', 'Cascadia Code', 'Fira Code', monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--bg); color: var(--on-surface); min-height: 100dvh; -webkit-font-smoothing: antialiased; overflow-x: hidden; position: relative; }
+    body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(ellipse 1100px 800px at 8% 35%, rgba(80,50,220,0.20) 0%, transparent 65%), radial-gradient(ellipse 800px 700px at 94% 88%, rgba(130,30,200,0.14) 0%, transparent 65%), radial-gradient(ellipse 500px 400px at 52% -2%, rgba(76,215,246,0.05) 0%, transparent 60%); }
+    body > * { position: relative; z-index: 1; }
+
+    /* NAV */
+    .navbar { position: sticky; top: 0; z-index: 200; border-bottom: 1px solid var(--outline); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); background: rgba(11,19,38,0.72); }
+    .nav-inner { max-width: 1080px; margin: 0 auto; padding: 0 2rem; height: 54px; display: flex; align-items: center; gap: 2.5rem; }
+    .nav-logo { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9375rem; font-weight: 700; color: var(--on-surface); text-decoration: none; letter-spacing: -0.01em; flex-shrink: 0; }
+    .logo-icon { width: 24px; height: 24px; border: 1.5px solid rgba(192,193,255,0.5); border-radius: 5px; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5px; padding: 4px; flex-shrink: 0; }
+    .logo-dot { border-radius: 1.5px; background: var(--primary); }
+    .logo-dot:nth-child(2) { opacity: 0.55; } .logo-dot:nth-child(3) { opacity: 0.55; } .logo-dot:nth-child(4) { opacity: 0.25; }
+    .nav-links { display: flex; align-items: center; gap: 1.75rem; }
+    .nav-link { font-size: 0.875rem; font-weight: 450; color: var(--on-dim); text-decoration: none; letter-spacing: 0.005em; padding-bottom: 3px; transition: color 0.18s ease; position: relative; }
+    .nav-link:hover { color: var(--on-surface); }
+    .nav-link.active { color: var(--on-surface); }
+    .nav-link.active::after { content: ''; position: absolute; bottom: -3px; left: 0; right: 0; height: 1.5px; background: var(--primary); border-radius: 1px; }
+    .nav-cta { margin-left: auto; padding: 0.46875rem 1.125rem; background: linear-gradient(135deg, #7c5ef5 0%, #5128e8 100%); color: #fff; font-family: var(--font); font-size: 0.875rem; font-weight: 600; letter-spacing: -0.005em; border-radius: 8px; border: none; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; transition: filter 0.18s, transform 0.15s; flex-shrink: 0; box-shadow: 0 0 20px rgba(100,70,240,0.25); }
+    .nav-cta:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
+    /* SEARCH BAR */
+    .search-bar {
+      border-bottom: 1px solid var(--outline);
+      padding: 0.75rem 2rem;
+      background: rgba(11,19,38,0.5);
+    }
+    .search-inner {
+      max-width: 1080px; margin: 0 auto;
+    }
+    .search-input-wrap {
+      display: flex; align-items: center; gap: 0.5rem;
+      background: rgba(255,255,255,0.04); border: 1px solid var(--outline-hard);
+      border-radius: 8px; padding: 0.4375rem 0.75rem;
+      max-width: 380px;
+    }
+    .search-input {
+      font-family: var(--font); font-size: 0.875rem;
+      background: transparent; border: none; outline: none;
+      color: var(--on-surface); flex: 1;
+    }
+    .search-input::placeholder { color: var(--muted); }
+    .search-kbd {
+      font-family: var(--mono); font-size: 0.625rem;
+      color: var(--muted); background: rgba(255,255,255,0.06);
+      border: 1px solid var(--outline-hard); border-radius: 4px;
+      padding: 0.125rem 0.375rem; white-space: nowrap;
+    }
+
+    /* THREE-COLUMN LAYOUT */
+    .doc-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr 180px;
+      max-width: 1080px; margin: 0 auto; padding: 0 2rem;
+      min-height: calc(100dvh - 54px - 44px - 80px);
+    }
+
+    /* LEFT SIDEBAR */
+    .doc-sidebar {
+      padding: 1.5rem 1.25rem 2rem 0;
+      border-right: 1px solid var(--outline);
+      position: sticky; top: calc(54px + 44px);
+      height: calc(100dvh - 54px - 44px);
+      overflow-y: auto; flex-shrink: 0;
+    }
+    .sidebar-section { margin-bottom: 1.5rem; }
+    .sidebar-group-label { font-size: 0.625rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); opacity: 0.7; margin-bottom: 0.375rem; }
+    .sidebar-list { display: flex; flex-direction: column; gap: 0.0625rem; }
+    .sidebar-link {
+      font-size: 0.8125rem; color: var(--on-dim);
+      text-decoration: none; padding: 0.3125rem 0.5rem;
+      border-radius: 5px; display: block;
+      transition: background 0.13s, color 0.13s;
+    }
+    .sidebar-link:hover { background: var(--surface-mid); color: var(--on-surface); }
+    .sidebar-link.active { background: var(--primary-dim); color: var(--primary); }
+
+    /* MAIN CONTENT */
+    .doc-content { padding: 2.5rem 2rem 5rem; min-width: 0; }
+
+    /* BREADCRUMB */
+    .breadcrumb { display: flex; align-items: center; gap: 0.375rem; margin-bottom: 1.5rem; }
+    .bc-item { font-size: 0.8125rem; color: var(--muted); }
+    .bc-sep  { font-size: 0.75rem; color: var(--muted); opacity: 0.5; }
+    .bc-current { color: var(--on-dim); }
+
+    /* DOC HEADING */
+    .doc-h1 { font-size: 2rem; font-weight: 800; letter-spacing: -0.04em; color: var(--on-surface); line-height: 1.1; margin-bottom: 0.75rem; }
+    .doc-lead { font-size: 1.0625rem; color: var(--on-dim); line-height: 1.7; margin-bottom: 2.5rem; border-bottom: 1px solid var(--outline); padding-bottom: 2rem; }
+
+    .doc-h2 { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.025em; color: var(--on-surface); margin: 2.5rem 0 0.875rem; padding-top: 0.5rem; border-top: 1px solid var(--outline); }
+    .doc-h2:first-of-type { border-top: none; margin-top: 0; }
+    .doc-h3 { font-size: 0.9375rem; font-weight: 600; letter-spacing: -0.015em; color: var(--on-surface); margin: 1.5rem 0 0.5rem; }
+    .doc-p  { font-size: 0.9rem; color: var(--on-dim); line-height: 1.75; margin-bottom: 1rem; }
+    .doc-p a { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; }
+
+    /* CALLOUT */
+    .callout {
+      border-radius: 8px; padding: 1rem 1.125rem;
+      margin: 1.25rem 0; display: flex; gap: 0.75rem; align-items: flex-start;
+      font-size: 0.875rem; line-height: 1.65;
+    }
+    .callout-info    { background: var(--primary-dim); border: 1px solid var(--primary-border); color: var(--on-dim); }
+    .callout-warn    { background: rgba(255,200,60,0.07); border: 1px solid rgba(255,200,60,0.22); color: var(--on-dim); }
+    .callout-success { background: rgba(76,215,246,0.07); border: 1px solid rgba(76,215,246,0.2); color: var(--on-dim); }
+    .callout-icon { flex-shrink: 0; margin-top: 1px; }
+    .ci-info    { color: var(--primary); }
+    .ci-warn    { color: #ffc83c; }
+    .ci-success { color: var(--tertiary); }
+
+    /* CODE BLOCK */
+    .code-block {
+      background: rgba(0,0,0,0.35); border: 1px solid var(--outline-hard);
+      border-radius: 10px; overflow: hidden; margin: 1rem 0 1.5rem;
+    }
+    .code-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.5rem 0.875rem; border-bottom: 1px solid var(--outline);
+      background: rgba(255,255,255,0.02);
+    }
+    .code-lang { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+    .copy-btn {
+      font-size: 0.6875rem; color: var(--muted); background: none; border: none;
+      cursor: pointer; font-family: var(--font); transition: color 0.15s;
+      display: flex; align-items: center; gap: 0.3125rem;
+    }
+    .copy-btn:hover { color: var(--on-surface); }
+    .code-body {
+      padding: 1rem 1.125rem; font-family: var(--mono); font-size: 0.78125rem;
+      line-height: 1.8; overflow-x: auto;
+    }
+    .code-body .kw  { color: var(--primary); }
+    .code-body .str { color: var(--secondary); }
+    .code-body .cm  { color: var(--muted); font-style: italic; }
+    .code-body .fn  { color: var(--tertiary); }
+    .code-body .lit { color: #ffb86c; }
+
+    /* INLINE CODE */
+    .ic { font-family: var(--mono); font-size: 0.8em; color: var(--primary); background: var(--primary-dim); border: 1px solid var(--primary-border); border-radius: 3px; padding: 0.1em 0.4em; }
+
+    /* TABLE */
+    .doc-table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; border-radius: 8px; border: 1px solid var(--outline); }
+    .doc-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    .doc-table th { padding: 0.625rem 1rem; text-align: left; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); background: rgba(255,255,255,0.02); border-bottom: 1px solid var(--outline); }
+    .doc-table td { padding: 0.625rem 1rem; color: var(--on-dim); border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; }
+    .doc-table tr:last-child td { border-bottom: none; }
+    .doc-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+    /* STEPS */
+    .steps { display: flex; flex-direction: column; gap: 0; margin: 1rem 0 1.5rem; }
+    .step { display: grid; grid-template-columns: 28px 1fr; gap: 0.875rem; padding-bottom: 1.5rem; position: relative; }
+    .step:last-child { padding-bottom: 0; }
+    .step:not(:last-child) .step-num::after { content: ''; position: absolute; left: 13px; top: 28px; bottom: 0; width: 1px; background: var(--outline); }
+    .step-num { width: 28px; height: 28px; border-radius: 50%; background: var(--primary-dim); border: 1px solid var(--primary-border); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: var(--primary); flex-shrink: 0; position: relative; }
+    .step-body {}
+    .step-title { font-size: 0.9375rem; font-weight: 600; color: var(--on-surface); margin-bottom: 0.375rem; }
+    .step-desc  { font-size: 0.875rem; color: var(--on-dim); line-height: 1.65; }
+
+    /* ON THIS PAGE */
+    .on-this-page {
+      padding: 1.5rem 0 2rem 1.5rem;
+      border-left: 1px solid var(--outline);
+      position: sticky; top: calc(54px + 44px);
+      height: calc(100dvh - 54px - 44px);
+      overflow-y: auto; flex-shrink: 0;
+    }
+    .otp-label { font-size: 0.625rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); opacity: 0.7; margin-bottom: 0.625rem; }
+    .otp-list { display: flex; flex-direction: column; gap: 0.125rem; }
+    .otp-link { font-size: 0.8125rem; color: var(--muted); text-decoration: none; padding: 0.25rem 0; display: block; transition: color 0.13s; border-left: 2px solid transparent; padding-left: 0.75rem; margin-left: -0.75rem; }
+    .otp-link:hover { color: var(--on-surface); }
+    .otp-link.active { color: var(--primary); border-left-color: var(--primary); }
+    .otp-link.sub { padding-left: 1.25rem; margin-left: -0.75rem; font-size: 0.75rem; }
+
+    /* PREV/NEXT NAV */
+    .doc-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--outline); }
+    .doc-nav-card { background: rgba(255,255,255,0.02); border: 1px solid var(--outline); border-radius: 10px; padding: 1rem 1.125rem; text-decoration: none; transition: background 0.15s, border-color 0.15s; }
+    .doc-nav-card:hover { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.14); }
+    .doc-nav-dir { font-size: 0.6875rem; color: var(--muted); margin-bottom: 0.25rem; }
+    .doc-nav-title { font-size: 0.875rem; font-weight: 600; color: var(--on-surface); }
+    .doc-nav-card.next { text-align: right; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 1.75rem 2rem; }
+    .footer-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; gap: 2rem; }
+    .footer-brand { display: flex; flex-direction: column; gap: 0.1875rem; }
+    .footer-name { font-size: 0.9375rem; font-weight: 700; letter-spacing: -0.015em; color: var(--on-surface); }
+    .footer-copy { font-size: 0.8125rem; color: var(--muted); opacity: 0.7; }
+    .footer-nav { display: flex; gap: 1.5rem; margin: 0 auto; }
+    .footer-nav-link { font-size: 0.875rem; color: var(--on-dim); opacity: 0.55; text-decoration: none; transition: opacity 0.18s; }
+    .footer-nav-link:hover { opacity: 1; }
+    .footer-socials { display: flex; gap: 0.5rem; }
+    .social-icon { width: 33px; height: 33px; background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.09); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--on-dim); text-decoration: none; transition: background 0.18s, color 0.18s, transform 0.15s; }
+    .social-icon:hover { background: rgba(255,255,255,0.08); color: var(--on-surface); transform: translateY(-1px); }
+
+    @media (max-width: 960px) { .doc-layout { grid-template-columns: 200px 1fr; } .on-this-page { display: none; } }
+    @media (max-width: 720px) { .nav-links { display: none; } .doc-layout { grid-template-columns: 1fr; } .doc-sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--outline); padding: 1rem 0; } .footer-nav { display: none; } .footer-inner { justify-content: space-between; } }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="dashboard.html" class="nav-logo">
+        <div class="logo-icon">
+          <div class="logo-dot"></div><div class="logo-dot"></div>
+          <div class="logo-dot"></div><div class="logo-dot"></div>
+        </div>
+        QuickForge
+      </a>
+      <div class="nav-links">
+        <a href="features.html"       class="nav-link">Features</a>
+        <a href="documentation.html"  class="nav-link active">Documentation</a>
+        <a href="community.html"      class="nav-link">Community</a>
+        <a href="changelog.html"      class="nav-link">Changelog</a>
+      </div>
+      <a href="dashboard.html" class="nav-cta">Try Demo</a>
+    </div>
+  </nav>
+
+  <div class="search-bar">
+    <div class="search-inner">
+      <div class="search-input-wrap">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input class="search-input" type="text" placeholder="Search documentation..." />
+        <span class="search-kbd">Ctrl K</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-layout">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="doc-sidebar">
+
+      <div class="sidebar-section">
+        <div class="sidebar-group-label">Getting started</div>
+        <div class="sidebar-list">
+          <a href="#" class="sidebar-link active" data-section="introduction">Introduction</a>
+          <a href="#" class="sidebar-link" data-section="installation">Installation</a>
+          <a href="#" class="sidebar-link" data-section="quickstart">Quickstart</a>
+          <a href="#" class="sidebar-link" data-section="project-structure">Project structure</a>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-group-label">CLI reference</div>
+        <div class="sidebar-list">
+          <a href="#" class="sidebar-link" data-section="create">quickforge create</a>
+          <a href="#" class="sidebar-link" data-section="add">quickforge add</a>
+          <a href="#" class="sidebar-link" data-section="list">quickforge list</a>
+          <a href="#" class="sidebar-link" data-section="upgrade">quickforge upgrade</a>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-group-label">Templates</div>
+        <div class="sidebar-list">
+          <a href="#" class="sidebar-link" data-section="nextjs-template">Next.js 15</a>
+          <a href="#" class="sidebar-link" data-section="react-template">React SPA</a>
+          <a href="#" class="sidebar-link" data-section="node-template">Node.js API</a>
+          <a href="#" class="sidebar-link" data-section="svelte-template">SvelteKit</a>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-group-label">Configuration</div>
+        <div class="sidebar-list">
+          <a href="#" class="sidebar-link" data-section="config-file">quickforge.config.ts</a>
+          <a href="#" class="sidebar-link" data-section="env-vars">Environment variables</a>
+          <a href="#" class="sidebar-link" data-section="plugins">Plugins</a>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-group-label">Deployment</div>
+        <div class="sidebar-list">
+          <a href="#" class="sidebar-link" data-section="vercel">Vercel</a>
+          <a href="#" class="sidebar-link" data-section="railway">Railway</a>
+          <a href="#" class="sidebar-link" data-section="docker">Docker</a>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="doc-content" id="doc-main">
+
+      <!-- INTRODUCTION -->
+      <div id="section-introduction">
+        <div class="breadcrumb">
+          <span class="bc-item">Getting started</span>
+          <span class="bc-sep">/</span>
+          <span class="bc-current">Introduction</span>
+        </div>
+
+        <h1 class="doc-h1">Introduction</h1>
+        <p class="doc-lead">QuickForge is a production-oriented scaffolding engine for web applications. It generates fully configured, deployment-ready projects from opinionated templates — with Auth, database, styling, and CI/CD pre-wired.</p>
+
+        <h2 class="doc-h2" id="what-is-quickforge">What is QuickForge</h2>
+        <p class="doc-p">Most scaffolding tools give you a project skeleton. QuickForge gives you a working application. Every template starts from a state where <span class="ic">npm run dev</span> works on the first try, <span class="ic">npm run build</span> produces a deployable artefact, and the CI pipeline passes before you write a single line of business logic.</p>
+        <p class="doc-p">The engine pulls templates from a remote registry at scaffold time, so you always get the latest version of each dependency and configuration pattern rather than a stale snapshot baked into an npm package.</p>
+
+        <div class="callout callout-info">
+          <svg class="callout-icon ci-info" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          <span>QuickForge requires <strong>Node.js 18+</strong> and <strong>Bun 1.0+</strong>. If you prefer npm or pnpm, pass <span class="ic">--pm npm</span> or <span class="ic">--pm pnpm</span> to any command.</span>
+        </div>
+
+        <h2 class="doc-h2" id="design-philosophy">Design philosophy</h2>
+        <p class="doc-p">QuickForge is built on three principles:</p>
+
+        <h3 class="doc-h3">Opinionated by default, configurable when it matters</h3>
+        <p class="doc-p">The defaults are chosen to reflect production best practices — TypeScript strict mode, ESLint flat config, Prettier, Husky pre-commit hooks. You opt out of defaults rather than opt in to them.</p>
+
+        <h3 class="doc-h3">No abstraction on top of your stack</h3>
+        <p class="doc-p">QuickForge writes standard Next.js, React, Hono, or SvelteKit code. There is no QuickForge runtime, no QuickForge component library, and no QuickForge-specific APIs. The generated project is a plain Next.js project the day after scaffolding.</p>
+
+        <h3 class="doc-h3">Reproducible across machines and time</h3>
+        <p class="doc-p">Lockfiles are committed, Docker builds are deterministic, and CI uses frozen installs. A project scaffolded today should build identically six months from now on a different machine.</p>
+
+        <h2 class="doc-h2" id="installation">Installation</h2>
+        <p class="doc-p">You do not need to install QuickForge globally. Use <span class="ic">npx</span> or <span class="ic">bunx</span> to run it at scaffold time:</p>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">bash</span>
+            <button class="copy-btn" onclick="copyCode(this)">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              Copy
+            </button>
+          </div>
+          <div class="code-body">
+<span class="cm"># Using npx (no global install required)</span>
+npx quickforge create my-app
+
+<span class="cm"># Or using bunx</span>
+bunx quickforge create my-app
+
+<span class="cm"># Install globally if you scaffold frequently</span>
+npm install -g quickforge
+bun add -g quickforge
+          </div>
+        </div>
+
+        <h2 class="doc-h2" id="quickstart">Quickstart — Next.js 15 in 60 seconds</h2>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <div class="step-title">Scaffold the project</div>
+              <div class="step-desc">Run the create command. QuickForge will fetch the template, resolve dependencies with Bun, and write the project to disk.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <div class="step-title">Configure environment variables</div>
+              <div class="step-desc">Copy <span class="ic">.env.example</span> to <span class="ic">.env.local</span> and fill in the required values. The scaffold includes a typed env schema that will fail fast at startup if anything is missing.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <div class="step-title">Run the database migration</div>
+              <div class="step-desc">Run <span class="ic">bun run db:push</span> to apply the baseline Prisma schema to your database. The connection string comes from <span class="ic">DATABASE_URL</span> in your .env file.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <div class="step-title">Start the dev server</div>
+              <div class="step-desc">Run <span class="ic">bun run dev</span> to start Next.js with Turbopack. The app is available at <span class="ic">localhost:3000</span> with hot module replacement enabled.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">bash</span>
+            <button class="copy-btn" onclick="copyCode(this)">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>
+              Copy
+            </button>
+          </div>
+          <div class="code-body">
+<span class="cm"># Scaffold with auth and database pre-configured</span>
+npx quickforge create my-app \
+  --stack next-js-v15 \
+  --auth github,google \
+  --db postgresql
+
+<span class="cm"># Navigate and configure</span>
+cd my-app
+cp .env.example .env.local
+<span class="cm"># edit .env.local with your credentials</span>
+
+<span class="cm"># Push schema and start</span>
+bun run db:push
+bun run dev
+          </div>
+        </div>
+
+        <h2 class="doc-h2" id="cli-flags">CLI flags reference</h2>
+
+        <div class="doc-table-wrap">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Flag</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="ic">--stack</span></td>
+                <td><span class="ic">next-js-v15</span></td>
+                <td>Template to scaffold. One of <span class="ic">next-js-v15</span>, <span class="ic">react-spa</span>, <span class="ic">node-express</span>, <span class="ic">sveltekit</span>.</td>
+              </tr>
+              <tr>
+                <td><span class="ic">--auth</span></td>
+                <td>none</td>
+                <td>Comma-separated OAuth providers to configure. e.g. <span class="ic">github,google,discord</span>.</td>
+              </tr>
+              <tr>
+                <td><span class="ic">--db</span></td>
+                <td>none</td>
+                <td>Database type for Prisma or Drizzle schema. One of <span class="ic">postgresql</span>, <span class="ic">mysql</span>, <span class="ic">sqlite</span>, <span class="ic">mongodb</span>.</td>
+              </tr>
+              <tr>
+                <td><span class="ic">--orm</span></td>
+                <td><span class="ic">prisma</span></td>
+                <td>ORM to use. One of <span class="ic">prisma</span>, <span class="ic">drizzle</span>.</td>
+              </tr>
+              <tr>
+                <td><span class="ic">--pm</span></td>
+                <td><span class="ic">bun</span></td>
+                <td>Package manager. One of <span class="ic">bun</span>, <span class="ic">pnpm</span>, <span class="ic">npm</span>.</td>
+              </tr>
+              <tr>
+                <td><span class="ic">--features</span></td>
+                <td>none</td>
+                <td>Additional integrations. Comma-separated: <span class="ic">stripe</span>, <span class="ic">email</span>, <span class="ic">analytics</span>.</td>
+              </tr>
+              <tr>
+                <td><span class="ic">--monorepo</span></td>
+                <td>false</td>
+                <td>Scaffold a Turborepo monorepo instead of a single app.</td>
+              </tr>
+              <tr>
+                <td><span class="ic">--no-git</span></td>
+                <td>false</td>
+                <td>Skip git initialisation. Useful when adding to an existing repository.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-success">
+          <svg class="callout-icon ci-success" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <span>All flags are optional. Running <span class="ic">npx quickforge create</span> without flags launches the interactive wizard that guides you through each choice.</span>
+        </div>
+
+        <h2 class="doc-h2" id="project-structure">Project structure — Next.js 15</h2>
+        <p class="doc-p">The generated Next.js project follows the App Router conventions with a predictable directory layout:</p>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">tree</span>
+            <button class="copy-btn" onclick="copyCode(this)">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>
+              Copy
+            </button>
+          </div>
+          <div class="code-body">
+my-app/
+├── src/
+│   ├── app/                   <span class="cm"># App Router pages and layouts</span>
+│   │   ├── (auth)/            <span class="cm"># Route group — auth-gated pages</span>
+│   │   │   └── dashboard/
+│   │   ├── api/               <span class="cm"># Route handlers</span>
+│   │   │   └── auth/[...nextauth]/
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── components/            <span class="cm"># Shared UI components</span>
+│   ├── lib/                   <span class="cm"># Utility functions and clients</span>
+│   │   ├── auth.ts            <span class="cm"># Auth.js config</span>
+│   │   ├── db.ts              <span class="cm"># Prisma client singleton</span>
+│   │   └── env.ts             <span class="cm"># Typed env schema (t3-env)</span>
+│   └── middleware.ts          <span class="cm"># Auth middleware</span>
+├── prisma/
+│   └── schema.prisma
+├── .env.example
+├── Dockerfile
+├── next.config.ts
+└── tsconfig.json
+          </div>
+        </div>
+
+        <div class="doc-nav">
+          <div></div>
+          <a href="#" class="doc-nav-card next" data-section="create">
+            <div class="doc-nav-dir">Next</div>
+            <div class="doc-nav-title">quickforge create</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- QUICKFORGE CREATE (hidden by default) -->
+      <div id="section-create" style="display: none;">
+        <div class="breadcrumb">
+          <span class="bc-item">CLI reference</span>
+          <span class="bc-sep">/</span>
+          <span class="bc-current">quickforge create</span>
+        </div>
+        <h1 class="doc-h1">quickforge create</h1>
+        <p class="doc-lead">Scaffold a new project from a QuickForge template. The create command fetches the chosen template from the registry, resolves all dependencies, and writes the project to disk.</p>
+
+        <h2 class="doc-h2" id="syntax">Syntax</h2>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body">npx quickforge create [project-name] [flags]</div>
+        </div>
+
+        <h2 class="doc-h2" id="examples">Examples</h2>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy</button></div>
+          <div class="code-body">
+<span class="cm"># Interactive mode</span>
+npx quickforge create
+
+<span class="cm"># Minimal scaffold — no auth, no database</span>
+npx quickforge create my-site --stack next-js-v15
+
+<span class="cm"># Full-stack with PostgreSQL and GitHub OAuth</span>
+npx quickforge create my-saas \
+  --stack next-js-v15 \
+  --auth github \
+  --db postgresql \
+  --features stripe,email
+
+<span class="cm"># SvelteKit with SQLite for a lightweight project</span>
+npx quickforge create my-blog \
+  --stack sveltekit \
+  --db sqlite \
+  --pm pnpm
+          </div>
+        </div>
+
+        <div class="doc-nav">
+          <a href="#" class="doc-nav-card" data-section="introduction">
+            <div class="doc-nav-dir">Previous</div>
+            <div class="doc-nav-title">Introduction</div>
+          </a>
+          <a href="#" class="doc-nav-card next" data-section="add">
+            <div class="doc-nav-dir">Next</div>
+            <div class="doc-nav-title">quickforge add</div>
+          </a>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- ON THIS PAGE -->
+    <aside class="on-this-page">
+      <div class="otp-label">On this page</div>
+      <div class="otp-list" id="otp-list">
+        <a href="#what-is-quickforge" class="otp-link active">What is QuickForge</a>
+        <a href="#design-philosophy"  class="otp-link">Design philosophy</a>
+        <a href="#installation"       class="otp-link">Installation</a>
+        <a href="#quickstart"         class="otp-link">Quickstart</a>
+        <a href="#cli-flags"          class="otp-link">CLI flags</a>
+        <a href="#project-structure"  class="otp-link">Project structure</a>
+      </div>
+    </aside>
+
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-name">QuickForge</span>
+        <span class="footer-copy">© 2024 QuickForge Engine</span>
+      </div>
+      <nav class="footer-nav">
+        <a href="documentation.html" class="footer-nav-link">Documentation</a>
+        <a href="changelog.html"     class="footer-nav-link">Changelog</a>
+        <a href="community.html"     class="footer-nav-link">Community</a>
+      </nav>
+      <div class="footer-socials">
+        <a href="#" class="social-icon" aria-label="GitHub">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2Z"/></svg>
+        </a>
+        <a href="#" class="social-icon" aria-label="X">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* SIDEBAR NAVIGATION */
+    const sidebarLinks = document.querySelectorAll('.sidebar-link[data-section]');
+    const navCards = document.querySelectorAll('.doc-nav-card[data-section]');
+    const sections = document.querySelectorAll('[id^="section-"]');
+
+    const OTP_MAPS = {
+      'introduction': [
+        { href: '#what-is-quickforge', label: 'What is QuickForge' },
+        { href: '#design-philosophy',  label: 'Design philosophy' },
+        { href: '#installation',       label: 'Installation' },
+        { href: '#quickstart',         label: 'Quickstart' },
+        { href: '#cli-flags',          label: 'CLI flags' },
+        { href: '#project-structure',  label: 'Project structure' },
+      ],
+      'create': [
+        { href: '#syntax',   label: 'Syntax' },
+        { href: '#examples', label: 'Examples' },
+      ],
+    };
+
+    function showSection(id) {
+      sections.forEach(s => s.style.display = 'none');
+      const target = document.getElementById('section-' + id);
+      if (target) target.style.display = 'block';
+
+      sidebarLinks.forEach(l => l.classList.toggle('active', l.dataset.section === id));
+
+      const otpList = document.getElementById('otp-list');
+      const items = OTP_MAPS[id] || [];
+      otpList.innerHTML = items.map((it, i) =>
+        `<a href="${it.href}" class="otp-link${i === 0 ? ' active' : ''}">${it.label}</a>`
+      ).join('');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    sidebarLinks.forEach(link => {
+      link.addEventListener('click', e => { e.preventDefault(); showSection(link.dataset.section); });
+    });
+
+    navCards.forEach(card => {
+      card.addEventListener('click', e => { e.preventDefault(); showSection(card.dataset.section); });
+    });
+
+    /* COPY CODE */
+    function copyCode(btn) {
+      const body = btn.closest('.code-block').querySelector('.code-body');
+      navigator.clipboard.writeText(body.innerText).then(() => {
+        btn.textContent = 'Copied';
+        setTimeout(() => { btn.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2"/></svg>Copy'; }, 2000);
+      });
+    }
+  </script>
+
+</body>
+</html>
